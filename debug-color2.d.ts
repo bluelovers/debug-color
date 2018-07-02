@@ -3,29 +3,29 @@
 //   util
 //   chalk
 
-declare module 'debug-color' {
+declare module 'debug-color2' {
     /**
       * Created by user on 2018/7/2/002.
       */
     export { InspectOptions } from 'util';
-    import { Console2 } from 'debug-color/lib/auto';
-    export { IOptions } from 'debug-color/lib/val';
+    import { Console2 } from 'debug-color2/lib/auto';
+    export { IOptions } from 'debug-color2/lib/val';
     export { Console2, Console2 as Console };
     export const console: Console2;
     export default console;
 }
 
-declare module 'debug-color/lib/auto' {
-    export * from 'debug-color/lib/node';
+declare module 'debug-color2/lib/auto' {
+    export * from 'debug-color2/lib/node';
 }
 
-declare module 'debug-color/lib/val' {
+declare module 'debug-color2/lib/val' {
     /**
         * Created by user on 2018/6/26/026.
         */
     import { Chalk } from 'chalk';
     import * as util from 'util';
-    import * as val from 'debug-color/lib/val';
+    import * as val from 'debug-color2/lib/val';
     export { InspectOptions } from 'util';
     export const SYM_DEBUG_CONSOLE: unique symbol;
     export const SYM_CHALK: unique symbol;
@@ -77,14 +77,14 @@ declare module 'debug-color/lib/val' {
     }
 }
 
-declare module 'debug-color/lib/node' {
+declare module 'debug-color2/lib/node' {
     /**
         * Created by user on 2018/7/2/002.
         */
     import { Chalk, Level } from 'chalk';
     import * as util from 'util';
-    import { IStyles } from 'debug-color/lib/styles';
-    import { IOptions, SYM_CHALK, SYM_CONSOLE, SYM_DATA } from 'debug-color/lib/val';
+    import { IStyles } from 'debug-color2/lib/styles';
+    import { IOptions, SYM_CHALK, SYM_CONSOLE, SYM_DATA } from 'debug-color2/lib/val';
     export { InspectOptions } from 'util';
     export interface Console2 extends Console, IStyles {
             (...argv: any[]): void;
@@ -207,7 +207,7 @@ declare module 'debug-color/lib/node' {
     export default Console2;
 }
 
-declare module 'debug-color/lib/styles' {
+declare module 'debug-color2/lib/styles' {
     /**
       * Created by user on 2018/6/26/026.
       */
@@ -272,7 +272,7 @@ declare module 'debug-color/lib/styles' {
         readonly bgCyanBright: this;
         readonly bgWhiteBright: this;
     }
-    import * as styles from 'debug-color/lib/styles';
+    import * as styles from 'debug-color2/lib/styles';
     export default styles;
 }
 

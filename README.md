@@ -1,4 +1,4 @@
-# debug-color
+# debug-color2
 
     colorize console log, this module can work with require('debug')
 
@@ -58,7 +58,7 @@ export interface IOptions
 ```
 
 ```ts
-import ConsoleColorize, { Console } from 'debug-color';
+import ConsoleColorize, { Console } from 'debug-color2';
 
 let options = {
     time: true,
