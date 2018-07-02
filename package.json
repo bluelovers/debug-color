@@ -13,7 +13,6 @@
   "license": "ISC",
   "author": "",
   "main": "index.js",
-  "types": "debug-color.d.ts",
   "directories": {
     "lib": "lib",
     "test": "test"

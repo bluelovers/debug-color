@@ -11,7 +11,7 @@ import path = require('path');
 dts.bundle({
 	name: pkg.name,
 	main: path.join(__dirname, '../index.d.ts'),
-	exclude: /test/,
+	newline: "\n",
 });
 
 console.log('dts-bundle');

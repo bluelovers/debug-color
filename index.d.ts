@@ -1,8 +1,9 @@
 /**
  * Created by user on 2018/7/2/002.
  */
-import { Console2, IOptions, InspectOptions } from './lib/node';
-export { IOptions, InspectOptions };
+export { InspectOptions } from 'util';
+import { Console2 } from './lib/auto';
+export { IOptions } from './lib/val';
 export { Console2, Console2 as Console };
 export declare const console: Console2;
 export default console;
