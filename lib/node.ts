@@ -354,6 +354,9 @@ export class Console2
 
 util.inherits(Console2, Function);
 
+// @ts-ignore
+Console2.prototype.Console = Console2
+
 styleNames.forEach(function (name)
 {
 	if (styleNamesFn.includes(name))

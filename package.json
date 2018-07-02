@@ -1,6 +1,6 @@
 {
   "name": "debug-color2",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "colorize console log, this module can work with require('debug')",
   "keywords": [
     "256",
@@ -35,6 +35,7 @@
     "type": "git",
     "url": "git+https://github.com/bluelovers/debug-color.git"
   },
+  "_types": "debug-color2.d.ts",
   "license": "ISC",
   "author": "",
   "main": "index.js",

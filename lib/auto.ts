@@ -7,11 +7,11 @@ let self;
 
 if (isNodeJs())
 {
-	self = require('./node').Console2;
+	self = require('./node');
 }
 else
 {
-	self = require('./browser').Console2;
+	self = require('./browser');
 }
 
 exports = self;
