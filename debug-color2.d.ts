@@ -8,6 +8,7 @@ declare module 'debug-color2' {
       * Created by user on 2018/7/2/002.
       */
     export { InspectOptions } from 'util';
+    export { ChalkOptions } from 'chalk';
     import { Console2 } from 'debug-color2/lib/auto';
     export { IOptions } from 'debug-color2/lib/val';
     export { Console2, Console2 as Console };
@@ -23,10 +24,11 @@ declare module 'debug-color2/lib/val' {
     /**
         * Created by user on 2018/6/26/026.
         */
-    import { Chalk } from 'chalk';
+    import { Chalk, ChalkOptions } from 'chalk';
     import * as util from 'util';
     import * as val from 'debug-color2/lib/val';
     export { InspectOptions } from 'util';
+    export { ChalkOptions };
     export const SYM_DEBUG_CONSOLE: unique symbol;
     export const SYM_CHALK: unique symbol;
     export const SYM_CONSOLE: unique symbol;
@@ -50,6 +52,7 @@ declare module 'debug-color2/lib/val' {
                 * set default inspectOptions
                 */
             inspectOptions?: util.InspectOptions;
+            chalkOptions?: ChalkOptions;
             /**
                 * set color style
                 */
