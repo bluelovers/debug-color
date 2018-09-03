@@ -4,7 +4,7 @@
 
 /// <reference types="node" />
 
-import chalk, { Chalk, Level } from 'chalk';
+import chalk, { Chalk, Level, ChalkOptions } from 'chalk';
 import { Console } from 'console';
 import { DateTime } from 'luxon';
 import * as util from 'util';
@@ -126,7 +126,7 @@ export class Console2
 {
 	constructor(target = console, options?: IOptions)
 	{
-		this[SYM_CONSOLE] = target;
+		this[SYM_CONSOLE] = target || console;
 
 		if (options && options.chalkOptions)
 		{
@@ -145,7 +145,15 @@ export class Console2
 		// @ts-ignore
 		this[SYM_DATA].stream = !!(console._stdout && console._stderr);
 
-		if (this[SYM_CHALK].enabled && !isNodeJs())
+		Object.assign(this[SYM_DATA], options || {});
+
+		this[SYM_DATA].chalkOptions = this[SYM_DATA].chalkOptions || {};
+
+		if (this[SYM_DATA].chalkOptions.enabled)
+		{
+			this[SYM_CHALK].enabled = true;
+		}
+		else if (this[SYM_CHALK].enabled && !isNodeJs())
 		{
 			this[SYM_CHALK].enabled = false;
 		}
@@ -153,8 +161,6 @@ export class Console2
 		{
 			this[SYM_CHALK].enabled = true;
 		}
-
-		Object.assign(this[SYM_DATA], options || {});
 	}
 
 	get chalk()
@@ -185,6 +191,16 @@ export class Console2
 	set enabledColor(value)
 	{
 		this[SYM_CHALK].enabled = value
+	}
+
+	get chalkOptions()
+	{
+		return this[SYM_DATA].chalkOptions
+	}
+
+	set chalkOptions(value)
+	{
+		this[SYM_DATA].chalkOptions = value
 	}
 
 	get inspectOptions()

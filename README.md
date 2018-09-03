@@ -10,7 +10,7 @@
 
 ## demo
 
-[API](lib/wrap.d.ts)
+[API](lib/node.d.ts)
 
 ```ts
 export interface IOptions

@@ -2,7 +2,7 @@
  * Created by user on 2018/7/2/002.
  */
 /// <reference types="node" />
-import { Chalk, Level } from 'chalk';
+import { Chalk, Level, ChalkOptions } from 'chalk';
 import * as util from 'util';
 import { IStyles } from './styles';
 import { IOptions, SYM_CHALK, SYM_CONSOLE, SYM_DATA } from './val';
@@ -111,6 +111,7 @@ export declare class Console2 {
     chalk: Chalk;
     levelColor: Level;
     enabledColor: boolean;
+    chalkOptions: ChalkOptions;
     inspectOptions: util.InspectOptions;
     enabled: boolean;
     setOptions(options: IOptions): this;

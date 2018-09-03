@@ -84,7 +84,7 @@ declare module 'debug-color2/lib/node' {
     /**
         * Created by user on 2018/7/2/002.
         */
-    import { Chalk, Level } from 'chalk';
+    import { Chalk, Level, ChalkOptions } from 'chalk';
     import * as util from 'util';
     import { IStyles } from 'debug-color2/lib/styles';
     import { IOptions, SYM_CHALK, SYM_CONSOLE, SYM_DATA } from 'debug-color2/lib/val';
@@ -193,6 +193,7 @@ declare module 'debug-color2/lib/node' {
             chalk: Chalk;
             levelColor: Level;
             enabledColor: boolean;
+            chalkOptions: ChalkOptions;
             inspectOptions: util.InspectOptions;
             enabled: boolean;
             setOptions(options: IOptions): this;
