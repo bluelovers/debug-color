@@ -2,10 +2,11 @@
  * Created by user on 2018/6/26/026.
  */
 
-import { Chalk } from 'chalk';
+import { Chalk, ChalkOptions } from 'chalk';
 import * as util from 'util';
 import * as val from './val';
 export { InspectOptions } from 'util';
+export { ChalkOptions }
 
 export const SYM_DEBUG_CONSOLE = Symbol('DebugConsole');
 export const SYM_CHALK = Symbol('chalk');
@@ -39,6 +40,8 @@ export interface IOptions
 	 * set default inspectOptions
 	 */
 	inspectOptions?: util.InspectOptions,
+
+	chalkOptions?: ChalkOptions,
 
 	/**
 	 * set color style

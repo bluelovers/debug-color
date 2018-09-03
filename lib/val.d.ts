@@ -2,10 +2,11 @@
  * Created by user on 2018/6/26/026.
  */
 /// <reference types="node" />
-import { Chalk } from 'chalk';
+import { Chalk, ChalkOptions } from 'chalk';
 import * as util from 'util';
 import * as val from './val';
 export { InspectOptions } from 'util';
+export { ChalkOptions };
 export declare const SYM_DEBUG_CONSOLE: unique symbol;
 export declare const SYM_CHALK: unique symbol;
 export declare const SYM_CONSOLE: unique symbol;
@@ -29,6 +30,7 @@ export interface IOptions {
      * set default inspectOptions
      */
     inspectOptions?: util.InspectOptions;
+    chalkOptions?: ChalkOptions;
     /**
      * set color style
      */

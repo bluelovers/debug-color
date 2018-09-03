@@ -127,7 +127,15 @@ export class Console2
 	constructor(target = console, options?: IOptions)
 	{
 		this[SYM_CONSOLE] = target;
-		this[SYM_CHALK] = chalk.constructor();
+
+		if (options && options.chalkOptions)
+		{
+			this[SYM_CHALK] = chalk.constructor(options.chalkOptions);
+		}
+		else
+		{
+			this[SYM_CHALK] = chalk.constructor();
+		}
 
 		// @ts-ignore
 		this[SYM_DATA] = Object.create({
