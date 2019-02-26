@@ -91,5 +91,4 @@ export interface IStyles
 	readonly bgWhiteBright: this;
 }
 
-import * as styles from './styles';
-export default styles
+export default exports as typeof import('./styles')

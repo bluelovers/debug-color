@@ -7,9 +7,9 @@
 import chalk, { Chalk, Level, ChalkOptions } from 'chalk';
 import { Console } from 'console';
 import { DateTime } from 'luxon';
-import * as util from 'util';
+import util = require('util');
 import isNodeJs from './chk';
-import * as FillProperty from './fill-property';
+import FillProperty = require('./fill-property');
 import { IStyles, styleNames, styleNamesFn } from './styles';
 import { defaultColors, IOptions, SYM_CHALK, SYM_CONSOLE, SYM_DATA } from './val';
 import { isForceColor } from './util';

@@ -22,5 +22,4 @@ export function isSupportsColor()
 	return chalk.supportsColor.level
 }
 
-import * as util from './util';
-export default util;
+export default exports as typeof import('./util');

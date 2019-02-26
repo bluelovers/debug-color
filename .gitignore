@@ -30,3 +30,4 @@ tests/temp*### Example user template template
 *.iml
 out
 gen
+*.tgz

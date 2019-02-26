@@ -1,6 +1,5 @@
 
 import isNodeJs from './chk';
-import * as CM from './node';
 export * from './node';
 
 let self;
@@ -14,4 +13,5 @@ else
 	self = require('./browser');
 }
 
-exports = self;
+// @ts-ignore
+export = self as any as typeof import('./node');

@@ -3,8 +3,8 @@
  */
 /// <reference types="node" />
 import { Chalk, ChalkOptions } from 'chalk';
-import * as util from 'util';
-import * as val from './val';
+import util = require('util');
+import val = require('./val');
 export { InspectOptions } from 'util';
 export { ChalkOptions };
 export declare const SYM_DEBUG_CONSOLE: unique symbol;

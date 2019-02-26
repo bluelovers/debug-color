@@ -1,7 +1,7 @@
 /**
  * Created by user on 2018/6/29/029.
  */
-import * as Console from 'console';
+import Console = require('console');
 
 const noop = function () {};
 export const methods_stdout = [

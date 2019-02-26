@@ -30,3 +30,7 @@ gen
 readme
 readme/*
 readme/
+
+*.ts
+!*.d.ts
+*.tgz

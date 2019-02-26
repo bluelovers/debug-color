@@ -3,7 +3,7 @@
  */
 /// <reference types="node" />
 import { Chalk, Level, ChalkOptions } from 'chalk';
-import * as util from 'util';
+import util = require('util');
 import { IStyles } from './styles';
 import { IOptions, SYM_CHALK, SYM_CONSOLE, SYM_DATA } from './val';
 export { InspectOptions } from 'util';

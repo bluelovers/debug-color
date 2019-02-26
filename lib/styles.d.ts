@@ -62,5 +62,5 @@ export interface IStyles {
     readonly bgCyanBright: this;
     readonly bgWhiteBright: this;
 }
-import * as styles from './styles';
-export default styles;
+declare const _default: typeof import("./styles");
+export default _default;
