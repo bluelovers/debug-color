@@ -12,15 +12,21 @@ import isNodeJs from './chk';
 import FillProperty = require('./fill-property');
 import { IStyles, styleNames, styleNamesFn } from './styles';
 import { defaultColors, IOptions, SYM_CHALK, SYM_CONSOLE, SYM_DATA } from './val';
-import { isForceColor } from './util';
+import { hasConsoleStream, isForceColor } from './util';
+import WriteStream = NodeJS.WriteStream;
+
+export type IConsoleWithStream<T extends object = Console> = T & {
+	_stdout?: WriteStream;
+	_stderr?: WriteStream;
+}
 
 export { InspectOptions } from 'util';
 
-export interface Console2 extends Console, IStyles
+export interface Console2 extends IConsoleWithStream<Console>, IStyles
 {
 	(...argv): void
 
-	[SYM_CONSOLE]: Console;
+	[SYM_CONSOLE]: IConsoleWithStream<Console> | Console2;
 	[SYM_CHALK]: Chalk;
 
 	[SYM_DATA]: IOptions
@@ -124,7 +130,7 @@ export interface Console2 extends Console, IStyles
 
 export class Console2
 {
-	constructor(target = console, options?: IOptions)
+	constructor(target: Console2 | IConsoleWithStream<Console> = console, options?: IOptions)
 	{
 		this[SYM_CONSOLE] = target || console;
 
@@ -142,8 +148,18 @@ export class Console2
 			colors: Object.create(defaultColors),
 		});
 
-		// @ts-ignore
-		this[SYM_DATA].stream = !!(console._stdout && console._stderr);
+		if (this[SYM_CONSOLE] instanceof Console2)
+		{
+			let target = (this[SYM_CONSOLE] as Console2).getStream();
+
+			// @ts-ignore
+			this[SYM_DATA].stream = hasConsoleStream(target);
+		}
+		else
+		{
+			// @ts-ignore
+			this[SYM_DATA].stream = hasConsoleStream(target);
+		}
 
 		Object.assign(this[SYM_DATA], options || {});
 
@@ -161,6 +177,45 @@ export class Console2
 		{
 			this[SYM_CHALK].enabled = true;
 		}
+	}
+
+	get _stdout()
+	{
+		return this.getStream()._stdout
+	}
+
+	get _stderr()
+	{
+		return this.getStream()._stderr
+	}
+
+	getStream(): {
+		_stdout: WriteStream;
+		_stderr: WriteStream;
+	}
+	{
+		if (this[SYM_DATA].stream)
+		{
+			let _stdout: WriteStream;
+			let _stderr: WriteStream;
+
+			if (this[SYM_CONSOLE] instanceof Console2)
+			{
+				return (this[SYM_CONSOLE] as Console2).getStream()
+			}
+			else
+			{
+				// @ts-ignore
+				({ _stdout, _stderr } = this[SYM_CONSOLE]);
+			}
+
+			return {
+				_stdout,
+				_stderr,
+			}
+		}
+
+		return null;
 	}
 
 	get chalk()
@@ -211,6 +266,11 @@ export class Console2
 	set inspectOptions(value)
 	{
 		this[SYM_DATA].inspectOptions = value
+	}
+
+	setInspectOptions(value: util.InspectOptions)
+	{
+		this[SYM_DATA].inspectOptions = Object.assign(this[SYM_DATA].inspectOptions || {}, value);
 	}
 
 	get enabled()
@@ -294,6 +354,16 @@ export class Console2
 		return this._log('fail', argv, 'error');
 	}
 
+	protected _labelFormat(data: Parameters<IOptions["labelFormatFn"]>[0])
+	{
+		if (this[SYM_DATA].labelFormatFn)
+		{
+			return this[SYM_DATA].labelFormatFn(data);
+		}
+
+		return `[${data.name.toString().toUpperCase()}]`
+	}
+
 	protected _log(name: string, argv, failBack = 'log')
 	{
 		if (!this.enabled)
@@ -311,7 +381,16 @@ export class Console2
 
 		if (data.time)
 		{
-			arr.push(this._time());
+			let ret = this._time({
+				name,
+				argv,
+				failBack,
+			});
+
+			if (ret != null)
+			{
+				arr.push(ret);
+			}
 		}
 
 		if (data.label)
@@ -323,7 +402,19 @@ export class Console2
 				_ok = false;
 			}
 
-			_ok && arr.push(`[${name.toString().toUpperCase()}]`);
+			if (_ok)
+			{
+				let ret = this._labelFormat({
+					name,
+					argv,
+					failBack,
+				});
+
+				if (ret != null)
+				{
+					arr.push(ret);
+				}
+			}
 		}
 
 		arr.push(o);
@@ -370,9 +461,20 @@ export class Console2
 		};
 	}
 
-	protected _time()
+	protected _time(data?: Parameters<IOptions["labelFormatFn"]>[0])
 	{
-		return DateTime.local().toFormat('[HH:mm:ss.SSS]');
+		if (this[SYM_DATA].timeFormatFn)
+		{
+			let data2: Parameters<IOptions["timeFormatFn"]>[0] = {
+				...data,
+				failBackTimeFormat: this[SYM_DATA].timeFormat || '[HH:mm:ss.SSS]',
+				date: DateTime.local(),
+			};
+
+			return this[SYM_DATA].timeFormatFn(data2);
+		}
+
+		return DateTime.local().toFormat(this[SYM_DATA].timeFormat || '[HH:mm:ss.SSS]');
 	}
 }
 

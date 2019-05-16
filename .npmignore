@@ -34,3 +34,4 @@ readme/
 *.ts
 !*.d.ts
 *.tgz
+/debug-color2.d.ts

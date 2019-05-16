@@ -6,10 +6,15 @@ import { Chalk, Level, ChalkOptions } from 'chalk';
 import util = require('util');
 import { IStyles } from './styles';
 import { IOptions, SYM_CHALK, SYM_CONSOLE, SYM_DATA } from './val';
+import WriteStream = NodeJS.WriteStream;
+export declare type IConsoleWithStream<T extends object = Console> = T & {
+    _stdout?: WriteStream;
+    _stderr?: WriteStream;
+};
 export { InspectOptions } from 'util';
-export interface Console2 extends Console, IStyles {
+export interface Console2 extends IConsoleWithStream<Console>, IStyles {
     (...argv: any[]): void;
-    [SYM_CONSOLE]: Console;
+    [SYM_CONSOLE]: IConsoleWithStream<Console> | Console2;
     [SYM_CHALK]: Chalk;
     [SYM_DATA]: IOptions;
     /**
@@ -107,12 +112,19 @@ export interface Console2 extends Console, IStyles {
     timeStamp(label?: string): void;
 }
 export declare class Console2 {
-    constructor(target?: Console, options?: IOptions);
+    constructor(target?: Console2 | IConsoleWithStream<Console>, options?: IOptions);
+    readonly _stdout: WriteStream;
+    readonly _stderr: WriteStream;
+    getStream(): {
+        _stdout: WriteStream;
+        _stderr: WriteStream;
+    };
     chalk: Chalk;
     levelColor: Level;
     enabledColor: boolean;
     chalkOptions: ChalkOptions;
     inspectOptions: util.InspectOptions;
+    setInspectOptions(value: util.InspectOptions): void;
     enabled: boolean;
     setOptions(options: IOptions): this;
     withOptions(options: IOptions): this;
@@ -122,8 +134,9 @@ export declare class Console2 {
     success(...argv: any[]): any;
     ok(...argv: any[]): any;
     fail(...argv: any[]): any;
+    protected _labelFormat(data: Parameters<IOptions["labelFormatFn"]>[0]): string;
     protected _log(name: string, argv: any, failBack?: string): any;
     protected _chalkStyleMethod(name: any): (...argv: any[]) => any;
-    protected _time(): any;
+    protected _time(data?: Parameters<IOptions["labelFormatFn"]>[0]): string;
 }
 export default Console2;

@@ -5,6 +5,7 @@
 import { Chalk, ChalkOptions } from 'chalk';
 import util = require('util');
 import val = require('./val');
+import { DateTime } from 'luxon';
 export { InspectOptions } from 'util';
 export { ChalkOptions };
 export declare const SYM_DEBUG_CONSOLE: unique symbol;
@@ -26,6 +27,26 @@ export interface IOptions {
      * show time label
      */
     time?: boolean;
+    /**
+     * allow change timeFormat
+     *
+     * @default '[HH:mm:ss.SSS]'
+     */
+    timeFormat?: string;
+    timeFormatFn?<T extends unknown[]>(data: Parameters<IOptions["labelFormatFn"]>[0] & {
+        failBackTimeFormat: string;
+        date: DateTime;
+    }): string;
+    /**
+     * allow change labelFormat
+     *
+     * @default `[${data.name.toString().toUpperCase()}]`
+     */
+    labelFormatFn?<T extends unknown[]>(data: {
+        name: string;
+        argv?: T;
+        failBack: string;
+    }): string;
     /**
      * set default inspectOptions
      */

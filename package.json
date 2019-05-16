@@ -1,6 +1,6 @@
 {
   "name": "debug-color2",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "colorize console log, this module can work with require('debug')",
   "keywords": [
     "256",
@@ -43,17 +43,22 @@
     "test": "test"
   },
   "scripts": {
+    "coverage": "npx nyc npm run test",
     "dts-bundle": "npx -p dts-bundle -c node ./test/dts-bundle.js",
-    "prepublishOnly": "npm run sort-package-json",
-    "sort-package-json": "npx sort-package-json"
+    "ncu": "npx npm-check-updates -u",
+    "prepublishOnly": "npm run ncu && npm run sort-package-json",
+    "sort-package-json": "npx sort-package-json",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@types/luxon": "^1.13.0",
     "chalk": "^2.4.2",
     "env-bool": "^1.0.3",
-    "luxon": "^1.11.3"
+    "luxon": "^1.13.2"
   },
+  "devDependencies": {},
   "peerDependencies": {
-    "debug": "^3.1.0"
+    "debug": "^4.1.1"
   },
   "_types": "debug-color2.d.ts"
 }

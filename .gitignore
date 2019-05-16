@@ -31,3 +31,7 @@ tests/temp*### Example user template template
 out
 gen
 *.tgz
+/tsconfig.json.tpl
+/.eslintrc.json.tpl
+/.browserslistrc
+/.nvmrc
