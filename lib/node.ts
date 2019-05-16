@@ -146,6 +146,7 @@ export class Console2
 		// @ts-ignore
 		this[SYM_DATA] = Object.create({
 			colors: Object.create(defaultColors),
+			// @ts-ignore
 		});
 
 		// @ts-ignore
@@ -169,7 +170,7 @@ export class Console2
 		else
 		{
 			// @ts-ignore
-			this[SYM_DATA].stream = hasConsoleStream(target);
+			this[SYM_DATA].stream = hasConsoleStream(this[SYM_CONSOLE]);
 		}
 
 		Object.assign(this[SYM_DATA], options || {});
