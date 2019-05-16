@@ -3,7 +3,9 @@
  */
 import Console = require('console');
 
-const noop = function () {};
+function noop(...argv): void
+function noop() {}
+
 export const methods_stdout = [
 
 	"debug",
@@ -11,7 +13,7 @@ export const methods_stdout = [
 	"info",
 	"log",
 
-];
+] as const;
 
 export const methods_output = [
 
@@ -20,7 +22,7 @@ export const methods_output = [
 	"dir",
 	"dirxml",
 
-];
+] as const;
 
 export const methods_other = [
 
@@ -35,7 +37,7 @@ export const methods_other = [
 
 	"count",
 
-];
+] as const;
 
 export const methods_inspector = [
 	"profile",
@@ -45,7 +47,7 @@ export const methods_inspector = [
 
 	"timeline",
 	"timelineEnd",
-];
+] as const;
 
 export const methods_stderr = [
 	"assert",
@@ -54,9 +56,24 @@ export const methods_stderr = [
 	"warn",
 
 	"exception",
-];
+] as const;
 
-export const methods = [].concat(methods_stdout, methods_stderr, methods_inspector, methods_other, methods_output);
+type ValueOf<T> = Exclude<T[keyof T], number | Function>;
+
+export const methods = [].concat(
+	methods_stdout,
+	methods_stderr,
+	methods_inspector,
+	methods_other,
+	methods_output,
+	) as (
+	ValueOf<typeof methods_stdout>
+	| ValueOf<typeof methods_stderr>
+	| ValueOf<typeof methods_inspector>
+	| ValueOf<typeof methods_other>
+	| ValueOf<typeof methods_output>
+		)[]
+;
 
 export function fillProperty<T = Console>(target: Console = console, ls = methods, fn = noop)
 {
@@ -64,7 +81,7 @@ export function fillProperty<T = Console>(target: Console = console, ls = method
 	{
 		if (!(method in target))
 		{
-			target[method] = noop;
+			target[method as string] = fn;
 		}
 	});
 

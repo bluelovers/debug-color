@@ -6,6 +6,7 @@ import { Chalk, ChalkOptions } from 'chalk';
 import util = require('util');
 import val = require('./val');
 import { DateTime } from 'luxon';
+import { IStyles, IStylesColorNames } from './styles';
 export { InspectOptions } from 'util';
 export { ChalkOptions }
 
@@ -19,6 +20,8 @@ export const SYM_EVENT = Symbol('event');
 export const SYM_DATA = Symbol('data');
 
 export default val;
+
+export type IOptionsColorsProp = 'debug' | 'error' | 'info' | 'log' | 'trace' | 'warn' | 'success' | 'ok' | 'exception' | 'fail';
 
 export interface IOptions
 {
@@ -69,17 +72,7 @@ export interface IOptions
 	/**
 	 * set color style
 	 */
-	colors?: {
-		debug?,
-		error?,
-		info?,
-		log?,
-		trace?,
-		warn?,
-		success?,
-		ok?,
-		[k: string]: string | Chalk | IChalkLike,
-	},
+	colors?: Record<IOptionsColorsProp | string, Chalk | IChalkLike | IStylesColorNames>,
 
 	/**
 	 * check is node.js console
@@ -87,7 +80,7 @@ export interface IOptions
 	readonly stream?: boolean,
 }
 
-export const defaultColors: IOptions["colors"] = {
+export const defaultColors: Partial<IOptions["colors"]> = {
 	error: 'red',
 	exception: 'red',
 	warn: 'red',

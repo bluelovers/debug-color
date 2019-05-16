@@ -485,7 +485,7 @@ Console2.prototype.Console = Console2
 
 styleNames.forEach(function (name)
 {
-	if (styleNamesFn.includes(name))
+	if (styleNamesFn.includes(name as any))
 	{
 		Object.defineProperty(Console2.prototype, name, {
 			get()
@@ -505,7 +505,7 @@ styleNames.forEach(function (name)
 	}
 });
 
-FillProperty.methods.forEach(function (name: string)
+FillProperty.methods.forEach(function (name)
 {
 	if (name == 'dir')
 	{
@@ -551,30 +551,30 @@ FillProperty.methods.forEach(function (name: string)
 			}
 		};
 	}
-	else if (FillProperty.methods_stdout.includes(name))
+	else if (FillProperty.methods_stdout.includes(name as any))
 	{
-		Console2.prototype[name] = function chalkStyleLog(...argv)
+		Console2.prototype[name as any] = function chalkStyleLog(...argv)
 		{
 			return this._log(name, argv)
 		};
 	}
-	else if (FillProperty.methods_stderr.includes(name))
+	else if (FillProperty.methods_stderr.includes(name as any))
 	{
-		Console2.prototype[name] = function chalkStyleLog(...argv)
+		Console2.prototype[name as any] = function chalkStyleLog(...argv)
 		{
 			return this._log(name, argv, 'error')
 		};
 	}
 	else
 	{
-		Console2.prototype[name] = function chalkStyleLogOthers(...argv)
+		Console2.prototype[name as any] = function chalkStyleLogOthers(...argv)
 		{
 			if (!this.enabled)
 			{
 				return;
 			}
 
-			return this[SYM_CONSOLE][name](...argv);
+			return this[SYM_CONSOLE][name as any](...argv);
 		};
 	}
 });

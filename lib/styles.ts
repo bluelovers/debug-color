@@ -10,10 +10,10 @@ const prototype = chalk.constructor.prototype;
 
 export const styleNames = Object
 	.getOwnPropertyNames(prototype)
-	.filter(v => v != 'constructor')
+	.filter(v => v != 'constructor') as (keyof IStyles)[]
 ;
 
-export const styleNamesFn = [
+export const styleNamesFn: IStylesFnNames[] = [
 	'rgb',
 	'hsl',
 	'hsv',
@@ -28,19 +28,47 @@ export const styleNamesFn = [
 	'keyword',
 ];
 
+export type IStylesFnNames =
+	'rgb'
+	| 'hsl'
+	| 'hsv'
+	| 'hwb'
+	| 'bgHex'
+	| 'bgKeyword'
+	| 'bgRgb'
+	| 'bgHsl'
+	| 'bgHsv'
+	| 'bgHwb'
+	| 'hex'
+	| 'keyword'
+	;
+
+export type IStylesColorNames = Exclude<keyof IStyles, IStylesFnNames>;
+
 export interface IStyles
 {
 	rgb(r: number, g: number, b: number): this;
+
 	hsl(h: number, s: number, l: number): this;
+
 	hsv(h: number, s: number, v: number): this;
+
 	hwb(h: number, w: number, b: number): this;
+
 	bgHex(color: string): this;
+
 	bgKeyword(color: string): this;
+
 	bgRgb(r: number, g: number, b: number): this;
+
 	bgHsl(h: number, s: number, l: number): this;
+
 	bgHsv(h: number, s: number, v: number): this;
+
 	bgHwb(h: number, w: number, b: number): this;
+
 	hex(color: string): this;
+
 	keyword(color: string): this;
 
 	readonly reset: this;
