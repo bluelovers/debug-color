@@ -1,6 +1,6 @@
 {
   "name": "debug-color2",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "colorize console log, this module can work with require('debug')",
   "keywords": [
     "256",

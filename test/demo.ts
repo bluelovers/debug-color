@@ -56,3 +56,5 @@ c1.warn('warn');
 c1.success('success');
 c1.ok('ok');
 c1.fail('fail');
+
+console.log(c1.getStream());

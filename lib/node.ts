@@ -148,12 +148,23 @@ export class Console2
 			colors: Object.create(defaultColors),
 		});
 
+		// @ts-ignore
+		this[SYM_DATA].stream = null;
+
 		if (this[SYM_CONSOLE] instanceof Console2)
 		{
 			let target = (this[SYM_CONSOLE] as Console2).getStream();
 
-			// @ts-ignore
-			this[SYM_DATA].stream = hasConsoleStream(target);
+			if (target)
+			{
+				// @ts-ignore
+				this[SYM_DATA].stream = hasConsoleStream(target);
+			}
+			else
+			{
+				// @ts-ignore
+				this[SYM_DATA].stream = false;
+			}
 		}
 		else
 		{
