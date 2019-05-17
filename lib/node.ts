@@ -538,18 +538,18 @@ FillProperty.methods.forEach(function (name)
 			if (!options && this[SYM_DATA].inspectOptions)
 			{
 				options = this[SYM_DATA].inspectOptions;
+			}
 
-				if (options.colors == null && enabledColor)
+			if (options)
+			{
+				if (enabledColor && options.colors == null)
 				{
 					options = {
 						...options,
 						colors: enabledColor
 					};
 				}
-			}
 
-			if (options)
-			{
 				return this[SYM_CONSOLE][name](object, options);
 			}
 
