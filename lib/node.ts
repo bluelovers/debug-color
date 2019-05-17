@@ -189,6 +189,11 @@ export class Console2
 		{
 			this[SYM_CHALK].enabled = true;
 		}
+
+		if (this[SYM_DATA].inspectOptions && this[SYM_DATA].inspectOptions.depth < 0)
+		{
+			this[SYM_DATA].inspectOptions.depth = null;
+		}
 	}
 
 	get _stdout()
@@ -528,9 +533,19 @@ FillProperty.methods.forEach(function (name)
 				return;
 			}
 
+			let enabledColor = this.enabledColor;
+
 			if (!options && this[SYM_DATA].inspectOptions)
 			{
 				options = this[SYM_DATA].inspectOptions;
+
+				if (options.colors == null && enabledColor)
+				{
+					options = {
+						...options,
+						colors: enabledColor
+					};
+				}
 			}
 
 			if (options)
@@ -538,7 +553,9 @@ FillProperty.methods.forEach(function (name)
 				return this[SYM_CONSOLE][name](object, options);
 			}
 
-			return this[SYM_CONSOLE][name](object);
+			return this[SYM_CONSOLE][name](object, {
+				colors: enabledColor,
+			});
 		};
 	}
 	else if (name == 'assert')
