@@ -468,7 +468,7 @@ export class Console2
 
 	protected _chalkStyleMethod(name)
 	{
-		return function chalkStyleMethod(...argv)
+		return function chalkStyleMethod(this: Console2, ...argv)
 		{
 			let o = this._clone();
 
@@ -572,6 +572,7 @@ FillProperty.methods.forEach(function (name)
 				let o;
 				if (argv.length)
 				{
+					// @ts-ignore
 					let s = this._logFormat(...argv);
 
 					o = this[SYM_CHALK](s);
@@ -582,15 +583,17 @@ FillProperty.methods.forEach(function (name)
 	}
 	else if (FillProperty.methods_stdout.includes(name as any))
 	{
-		Console2.prototype[name as any] = function chalkStyleLog(...argv)
+		Console2.prototype[name as any] = function chalkStyleLogStdout(...argv)
 		{
+			// @ts-ignore
 			return this._log(name, argv)
 		};
 	}
 	else if (FillProperty.methods_stderr.includes(name as any))
 	{
-		Console2.prototype[name as any] = function chalkStyleLog(...argv)
+		Console2.prototype[name as any] = function chalkStyleLogStderr(...argv)
 		{
+			// @ts-ignore
 			return this._log(name, argv, 'error')
 		};
 	}
