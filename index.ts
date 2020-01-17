@@ -17,4 +17,4 @@ export const console = new Console2();
 
 export const chalkByConsole = createFnChalkByConsole(console);
 
-export default console;
+export default console as Console2;

@@ -9,4 +9,5 @@ export { createChalkStyleLog, hasConsoleStream, isForceColor, isSupportsColor, c
 export { Console2, Console2 as Console };
 export declare const console: Console2;
 export declare const chalkByConsole: <R, C extends Console2 = Console2>(cb: (chalk: C["chalk"], _console: C) => R, _console?: C) => R;
-export default console;
+declare const _default: Console2;
+export default _default;

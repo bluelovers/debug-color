@@ -1,7 +1,7 @@
 /**
  * Created by user on 2018/6/29/029.
  */
-import Console = require('console');
+import Console from 'console';
 
 function noop(...argv): void
 function noop() {}

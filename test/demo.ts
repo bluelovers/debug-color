@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import { Console2 } from '..';
-import debug = require('debug');
+import debug from 'debug';
 
 let c1 = new Console2();
 

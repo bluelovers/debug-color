@@ -7,11 +7,11 @@
 import chalk, { Chalk, Level, ChalkOptions } from 'chalk';
 import { Console } from 'console';
 import { DateTime } from 'luxon';
-import util = require('util');
+import { format as utilFormat, inherits as utilInherits } from 'util';
 import isNodeJs from './chk';
-import FillProperty = require('./fill-property');
+import { methods_stdout, methods_stderr, methods } from './fill-property';
 import { IStyles, styleNames, styleNamesFn } from './styles';
-import { defaultColors, IOptions, SYM_CHALK, SYM_CONSOLE, SYM_DATA } from './val';
+import { defaultColors, IOptions, SYM_CHALK, SYM_CONSOLE, SYM_DATA, InspectOptions } from './val';
 import { hasConsoleStream, isForceColor } from './util';
 import WriteStream = NodeJS.WriteStream;
 
@@ -20,7 +20,7 @@ export type IConsoleWithStream<T extends object = Console> = T & {
 	_stderr?: WriteStream;
 }
 
-export { InspectOptions } from 'util';
+export { InspectOptions };
 
 export interface Console2 extends IConsoleWithStream<Console>, IStyles
 {
@@ -285,7 +285,7 @@ export class Console2
 		this[SYM_DATA].inspectOptions = value
 	}
 
-	setInspectOptions(value: util.InspectOptions)
+	setInspectOptions(value: InspectOptions)
 	{
 		this[SYM_DATA].inspectOptions = Object.assign(this[SYM_DATA].inspectOptions || {}, value);
 	}
@@ -353,7 +353,7 @@ export class Console2
 
 	protected _logFormat(format, ...args)
 	{
-		return util.format(format, ...args);
+		return utilFormat(format, ...args);
 	}
 
 	success(...argv)
@@ -495,7 +495,7 @@ export class Console2
 	}
 }
 
-util.inherits(Console2, Function);
+utilInherits(Console2, Function);
 
 // @ts-ignore
 Console2.prototype.Console = Console2
@@ -522,7 +522,7 @@ styleNames.forEach(function (name)
 	}
 });
 
-FillProperty.methods.forEach(function (name)
+methods.forEach(function (name)
 {
 	if (name == 'dir')
 	{
@@ -581,7 +581,7 @@ FillProperty.methods.forEach(function (name)
 			}
 		};
 	}
-	else if (FillProperty.methods_stdout.includes(name as any))
+	else if (methods_stdout.includes(name as any))
 	{
 		Console2.prototype[name as any] = function chalkStyleLogStdout(...argv)
 		{
@@ -589,7 +589,7 @@ FillProperty.methods.forEach(function (name)
 			return this._log(name, argv)
 		};
 	}
-	else if (FillProperty.methods_stderr.includes(name as any))
+	else if (methods_stderr.includes(name as any))
 	{
 		Console2.prototype[name as any] = function chalkStyleLogStderr(...argv)
 		{

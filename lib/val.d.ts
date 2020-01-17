@@ -3,8 +3,7 @@
  */
 /// <reference types="node" />
 import { Chalk, ChalkOptions } from 'chalk';
-import util = require('util');
-import val = require('./val');
+import { InspectOptions } from 'util';
 import { DateTime } from 'luxon';
 import { IStylesColorNames } from './styles';
 export { InspectOptions } from 'util';
@@ -14,7 +13,6 @@ export declare const SYM_CHALK: unique symbol;
 export declare const SYM_CONSOLE: unique symbol;
 export declare const SYM_EVENT: unique symbol;
 export declare const SYM_DATA: unique symbol;
-export default val;
 export declare type IOptionsColorsProp = 'debug' | 'error' | 'info' | 'log' | 'trace' | 'warn' | 'success' | 'ok' | 'exception' | 'fail';
 export interface IOptions {
     /**
@@ -52,7 +50,7 @@ export interface IOptions {
     /**
      * set default inspectOptions
      */
-    inspectOptions?: util.InspectOptions;
+    inspectOptions?: InspectOptions;
     chalkOptions?: ChalkOptions;
     /**
      * set color style
@@ -69,3 +67,5 @@ export interface IChalkLike {
     (string: any, ...argv: any[]): string;
     (...argv: any[]): string;
 }
+declare const _default: typeof import("./val");
+export default _default;

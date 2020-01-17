@@ -1,9 +1,7 @@
 /**
  * Created by user on 2018/6/26/026.
  */
-import chalk from 'chalk';
-export { chalk };
-export declare const styleNames: ("bold" | "inverse" | "hidden" | "visible" | "reset" | "hex" | "rgb" | "hsl" | "hsv" | "hwb" | "bgHex" | "bgKeyword" | "bgRgb" | "bgHsl" | "bgHsv" | "bgHwb" | "keyword" | "dim" | "italic" | "underline" | "strikethrough" | "black" | "red" | "green" | "yellow" | "blue" | "magenta" | "cyan" | "white" | "gray" | "grey" | "blackBright" | "redBright" | "greenBright" | "yellowBright" | "blueBright" | "magentaBright" | "cyanBright" | "whiteBright" | "bgBlack" | "bgRed" | "bgGreen" | "bgYellow" | "bgBlue" | "bgMagenta" | "bgCyan" | "bgWhite" | "bgBlackBright" | "bgRedBright" | "bgGreenBright" | "bgYellowBright" | "bgBlueBright" | "bgMagentaBright" | "bgCyanBright" | "bgWhiteBright")[];
+export declare const styleNames: ("rgb" | "hsl" | "hsv" | "hwb" | "bgHex" | "bgKeyword" | "bgRgb" | "bgHsl" | "bgHsv" | "bgHwb" | "hex" | "keyword" | "reset" | "bold" | "dim" | "italic" | "underline" | "inverse" | "hidden" | "strikethrough" | "visible" | "black" | "red" | "green" | "yellow" | "blue" | "magenta" | "cyan" | "white" | "gray" | "grey" | "blackBright" | "redBright" | "greenBright" | "yellowBright" | "blueBright" | "magentaBright" | "cyanBright" | "whiteBright" | "bgBlack" | "bgRed" | "bgGreen" | "bgYellow" | "bgBlue" | "bgMagenta" | "bgCyan" | "bgWhite" | "bgBlackBright" | "bgRedBright" | "bgGreenBright" | "bgYellowBright" | "bgBlueBright" | "bgMagentaBright" | "bgCyanBright" | "bgWhiteBright")[];
 export declare const styleNamesFn: IStylesFnNames[];
 export declare type IStylesFnNames = 'rgb' | 'hsl' | 'hsv' | 'hwb' | 'bgHex' | 'bgKeyword' | 'bgRgb' | 'bgHsl' | 'bgHsv' | 'bgHwb' | 'hex' | 'keyword';
 export declare type IStylesColorNames = Exclude<keyof IStyles, IStylesFnNames>;

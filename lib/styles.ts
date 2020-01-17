@@ -4,8 +4,6 @@
 
 import chalk from 'chalk';
 
-export { chalk }
-
 const prototype = chalk.constructor.prototype;
 
 export const styleNames = Object

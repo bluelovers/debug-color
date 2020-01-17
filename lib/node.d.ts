@@ -3,15 +3,14 @@
  */
 /// <reference types="node" />
 import { Chalk, Level, ChalkOptions } from 'chalk';
-import util = require('util');
 import { IStyles } from './styles';
-import { IOptions, SYM_CHALK, SYM_CONSOLE, SYM_DATA } from './val';
+import { IOptions, SYM_CHALK, SYM_CONSOLE, SYM_DATA, InspectOptions } from './val';
 import WriteStream = NodeJS.WriteStream;
 export declare type IConsoleWithStream<T extends object = Console> = T & {
     _stdout?: WriteStream;
     _stderr?: WriteStream;
 };
-export { InspectOptions } from 'util';
+export { InspectOptions };
 export interface Console2 extends IConsoleWithStream<Console>, IStyles {
     (...argv: any[]): void;
     [SYM_CONSOLE]: IConsoleWithStream<Console> | Console2;
@@ -113,19 +112,25 @@ export interface Console2 extends IConsoleWithStream<Console>, IStyles {
 }
 export declare class Console2 {
     constructor(target?: Console2 | IConsoleWithStream<Console>, options?: IOptions);
-    readonly _stdout: WriteStream;
-    readonly _stderr: WriteStream;
+    get _stdout(): WriteStream;
+    get _stderr(): WriteStream;
     getStream(): {
         _stdout: WriteStream;
         _stderr: WriteStream;
     };
-    chalk: Chalk;
-    levelColor: Level;
-    enabledColor: boolean;
-    chalkOptions: ChalkOptions;
-    inspectOptions: util.InspectOptions;
-    setInspectOptions(value: util.InspectOptions): void;
-    enabled: boolean;
+    get chalk(): Chalk;
+    set chalk(value: Chalk);
+    get levelColor(): Level;
+    set levelColor(value: Level);
+    get enabledColor(): boolean;
+    set enabledColor(value: boolean);
+    get chalkOptions(): ChalkOptions;
+    set chalkOptions(value: ChalkOptions);
+    get inspectOptions(): InspectOptions;
+    set inspectOptions(value: InspectOptions);
+    setInspectOptions(value: InspectOptions): void;
+    get enabled(): boolean;
+    set enabled(value: boolean);
     setOptions(options: IOptions): this;
     withOptions(options: IOptions): this;
     protected _clone(): this;

@@ -1,6 +1,6 @@
 {
   "name": "debug-color2",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "colorize console log, this module can work with require('debug')",
   "keywords": [
     "256",
@@ -46,19 +46,30 @@
     "coverage": "npx nyc npm run test",
     "dts-bundle": "npx -p dts-bundle -c node ./test/dts-bundle.js",
     "lint": "npx eslint **/*.ts",
-    "ncu": "npx npm-check-updates -u",
-    "prepublishOnly": "npm run ncu && npm run sort-package-json",
+    "ncu": "npx yarn-tool ncu -u",
+    "npm:publish": "npm publish",
+    "postpublish_": "git commit -m \"publish new version\" .",
+    "prepublish:lockfile": "npx sync-lockfile .",
+    "prepublishOnly": "yarn run ncu && yarn run sort-package-json && yarn run test",
     "postpublish": "git commit -m \"publish new version\" .",
-    "sort-package-json": "npx sort-package-json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sort-package-json": "npx yarn-tool sort",
+    "test": "npx ts-node ./test/demo.ts",
+    "test:mocha": "npx mocha --require ts-node/register \"!(node_modules)/**/*.{test,spec}.{ts,tsx}\"",
+    "tsc:default": "tsc -p tsconfig.json",
+    "tsc:esm": "tsc -p tsconfig.esm.json"
   },
   "dependencies": {
     "@types/luxon": "*",
-    "chalk": "^2.4.2",
+    "chalk": "< 3 && >= 2",
     "env-bool": "^1.0.3",
-    "luxon": "^1.16.0"
+    "luxon": "^1.21.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "debug": "^4.1.1",
+    "@bluelovers/tsconfig": "^1.0.15",
+    "@types/debug": "^4.1.5",
+    "@types/node": "^13.1.8"
+  },
   "peerDependencies": {
     "debug": "^4.1.1"
   },
