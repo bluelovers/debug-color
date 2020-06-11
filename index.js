@@ -25,6 +25,7 @@ Object.defineProperty(exports, "hasConsoleStream", { enumerable: true, get: func
 Object.defineProperty(exports, "isForceColor", { enumerable: true, get: function () { return util_2.isForceColor; } });
 Object.defineProperty(exports, "isSupportsColor", { enumerable: true, get: function () { return util_2.isSupportsColor; } });
 Object.defineProperty(exports, "createFnChalkByConsole", { enumerable: true, get: function () { return util_2.createFnChalkByConsole; } });
+Object.defineProperty(exports, "chalkByConsoleMaybe", { enumerable: true, get: function () { return util_2.chalkByConsoleMaybe; } });
 exports.console = new auto_1.Console2();
 exports.chalkByConsole = util_1.createFnChalkByConsole(exports.console);
 exports.default = exports.console;

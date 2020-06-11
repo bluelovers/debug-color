@@ -4,7 +4,7 @@
 
 import chalk, { Level } from 'chalk';
 import envBool from 'env-bool';
-import Console2, { IConsoleWithStream } from './node';
+import Console2, { IConsoleWithStream, IChalk } from './node';
 
 export function isForceColor(env?): boolean | number | Level
 {
@@ -31,6 +31,11 @@ export function createFnChalkByConsole<CI extends Console2>(console: CI)
 	{
 		return cb(_console.chalk, _console)
 	}
+}
+
+export function chalkByConsoleMaybe<CI extends Console2>(console: CI): IChalk
+{
+	return console.chalk ?? chalk
 }
 
 export function createChalkStyleLog<CI extends Console2>(console: CI, name: string, failBack = 'log')

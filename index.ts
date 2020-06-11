@@ -10,7 +10,7 @@ import { Console2 } from './lib/auto';
 
 export * from './lib/types';
 
-export { createChalkStyleLog, hasConsoleStream, isForceColor, isSupportsColor, createFnChalkByConsole } from './lib/util';
+export { createChalkStyleLog, hasConsoleStream, isForceColor, isSupportsColor, createFnChalkByConsole, chalkByConsoleMaybe } from './lib/util';
 
 export { Console2, Console2 as Console }
 

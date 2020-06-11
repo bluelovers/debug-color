@@ -4,7 +4,7 @@
 export { InspectOptions } from 'util';
 import { Console2 } from './lib/auto';
 export * from './lib/types';
-export { createChalkStyleLog, hasConsoleStream, isForceColor, isSupportsColor, createFnChalkByConsole } from './lib/util';
+export { createChalkStyleLog, hasConsoleStream, isForceColor, isSupportsColor, createFnChalkByConsole, chalkByConsoleMaybe } from './lib/util';
 export { Console2, Console2 as Console };
 export declare const console: Console2;
 export declare const chalkByConsole: <R, C extends Console2 = Console2>(cb: (chalk: C["chalk"], _console: C) => R, _console?: C) => R;
