@@ -3,9 +3,9 @@
  */
 
 import ConsoleNode from './node';
+import { IOptions } from './types';
+
 export * from './node';
-import { styleNames, styleNamesFn } from './styles';
-import { IOptions } from './val';
 
 export class Console2 extends ConsoleNode
 {

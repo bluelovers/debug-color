@@ -3,13 +3,21 @@
  */
 
 import chalk from 'chalk';
+import { IStyles, IStylesFnNames, IStylesNamesWithoutFn } from './types';
 
-const prototype = chalk.constructor.prototype;
+export * from './types';
 
-export const styleNames = Object
-	.getOwnPropertyNames(prototype)
-	.filter(v => v != 'constructor') as (keyof IStyles)[]
-;
+export function getStyleNamesByChalk(chalk): (keyof IStyles)[]
+{
+	const prototype = chalk.constructor.prototype;
+
+	return Object
+		.getOwnPropertyNames(prototype)
+		.filter(v => v != 'constructor') as (keyof IStyles)[]
+		;
+}
+
+export const styleNames = getStyleNamesByChalk(chalk);
 
 export const styleNamesFn: IStylesFnNames[] = [
 	'rgb',
@@ -26,95 +34,6 @@ export const styleNamesFn: IStylesFnNames[] = [
 	'keyword',
 ];
 
-export type IStylesFnNames =
-	'rgb'
-	| 'hsl'
-	| 'hsv'
-	| 'hwb'
-	| 'bgHex'
-	| 'bgKeyword'
-	| 'bgRgb'
-	| 'bgHsl'
-	| 'bgHsv'
-	| 'bgHwb'
-	| 'hex'
-	| 'keyword'
-	;
-
-export type IStylesColorNames = Exclude<keyof IStyles, IStylesFnNames>;
-
-export interface IStyles
-{
-	rgb(r: number, g: number, b: number): this;
-
-	hsl(h: number, s: number, l: number): this;
-
-	hsv(h: number, s: number, v: number): this;
-
-	hwb(h: number, w: number, b: number): this;
-
-	bgHex(color: string): this;
-
-	bgKeyword(color: string): this;
-
-	bgRgb(r: number, g: number, b: number): this;
-
-	bgHsl(h: number, s: number, l: number): this;
-
-	bgHsv(h: number, s: number, v: number): this;
-
-	bgHwb(h: number, w: number, b: number): this;
-
-	hex(color: string): this;
-
-	keyword(color: string): this;
-
-	readonly reset: this;
-	readonly bold: this;
-	readonly dim: this;
-	readonly italic: this;
-	readonly underline: this;
-	readonly inverse: this;
-	readonly hidden: this;
-	readonly strikethrough: this;
-
-	readonly visible: this;
-
-	readonly black: this;
-	readonly red: this;
-	readonly green: this;
-	readonly yellow: this;
-	readonly blue: this;
-	readonly magenta: this;
-	readonly cyan: this;
-	readonly white: this;
-	readonly gray: this;
-	readonly grey: this;
-	readonly blackBright: this;
-	readonly redBright: this;
-	readonly greenBright: this;
-	readonly yellowBright: this;
-	readonly blueBright: this;
-	readonly magentaBright: this;
-	readonly cyanBright: this;
-	readonly whiteBright: this;
-
-	readonly bgBlack: this;
-	readonly bgRed: this;
-	readonly bgGreen: this;
-	readonly bgYellow: this;
-	readonly bgBlue: this;
-	readonly bgMagenta: this;
-	readonly bgCyan: this;
-	readonly bgWhite: this;
-	readonly bgBlackBright: this;
-	readonly bgRedBright: this;
-	readonly bgGreenBright: this;
-	readonly bgYellowBright: this;
-	readonly bgBlueBright: this;
-	readonly bgMagentaBright: this;
-	readonly bgCyanBright: this;
-	readonly bgWhiteBright: this;
-}
+export const styleNamesWithoutFn = styleNames.filter(name => !styleNamesFn.includes(name as any)) as IStylesNamesWithoutFn
 
 export default exports as typeof import('./styles')

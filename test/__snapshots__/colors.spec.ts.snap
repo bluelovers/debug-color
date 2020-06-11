@@ -1,0 +1,697 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`styleNamesWithoutFn ansi 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn ansi 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn ansi256 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn ansi256 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn apple 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn apple 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgAnsi 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgAnsi 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgAnsi256 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgAnsi256 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgApple 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgApple 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgBlack 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgBlack 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgBlackBright 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgBlackBright 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgBlue 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgBlue 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgBlueBright 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgBlueBright 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgCmyk 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgCmyk 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgCyan 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgCyan 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgCyanBright 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgCyanBright 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgGreen 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgGreen 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgGreenBright 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgGreenBright 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgHcg 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgHcg 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgLab 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgLab 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgLch 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgLch 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgMagenta 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgMagenta 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgMagentaBright 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgMagentaBright 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgRed 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgRed 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgRedBright 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgRedBright 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgWhite 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgWhite 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgWhiteBright 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgWhiteBright 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgXyz 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgXyz 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgYellow 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgYellow 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bgYellowBright 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bgYellowBright 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn black 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn black 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn blue 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn blue 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn blueBright 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn blueBright 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn bold 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn bold 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn cmyk 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn cmyk 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn cyan 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn cyan 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn cyanBright 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn cyanBright 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn dim 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn dim 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn gray 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn gray 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn green 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn green 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn greenBright 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn greenBright 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn grey 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn grey 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn hcg 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn hcg 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn hidden 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn hidden 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn inverse 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn inverse 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn italic 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn italic 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn lab 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn lab 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn lch 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn lch 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn magenta 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn magenta 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn magentaBright 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn magentaBright 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn red 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn red 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn redBright 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn redBright 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn reset 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn reset 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn strikethrough 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn strikethrough 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn underline 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn underline 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn visible 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn visible 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn white 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn white 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn whiteBright 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn whiteBright 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn xyz 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn xyz 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn yellow 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn yellow 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;
+
+exports[`styleNamesWithoutFn yellowBright 1`] = `"function"`;
+
+exports[`styleNamesWithoutFn yellowBright 2`] = `
+Object {
+  Symbol(chalk): [Function],
+  Symbol(data): Object {
+    "chalkOptions": Object {},
+    "stream": true,
+  },
+}
+`;

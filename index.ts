@@ -5,14 +5,15 @@
 import { createFnChalkByConsole } from './lib/util';
 
 export { InspectOptions } from 'util';
-export { ChalkOptions } from 'chalk';
 
 import { Console2 } from './lib/auto';
-export { IOptions } from './lib/val';
+
+export * from './lib/types';
 
 export { createChalkStyleLog, hasConsoleStream, isForceColor, isSupportsColor, createFnChalkByConsole } from './lib/util';
 
 export { Console2, Console2 as Console }
+
 export const console = new Console2();
 
 export const chalkByConsole = createFnChalkByConsole(console);

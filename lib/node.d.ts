@@ -2,19 +2,14 @@
  * Created by user on 2018/7/2/002.
  */
 /// <reference types="node" />
-import { Chalk, Level, ChalkOptions } from 'chalk';
-import { IStyles } from './styles';
-import { IOptions, SYM_CHALK, SYM_CONSOLE, SYM_DATA, InspectOptions } from './val';
-import WriteStream = NodeJS.WriteStream;
-export declare type IConsoleWithStream<T extends object = Console> = T & {
-    _stdout?: WriteStream;
-    _stderr?: WriteStream;
-};
-export { InspectOptions };
+import { IChalkOptions } from './styles';
+import { SYM_CHALK, SYM_CONSOLE, SYM_DATA } from './val';
+import { IChalk, IOptions, IStyles, IConsoleWithStream, InspectOptions, ILevel, IWriteStream } from './types';
+export * from './types';
 export interface Console2 extends IConsoleWithStream<Console>, IStyles {
     (...argv: any[]): void;
     [SYM_CONSOLE]: IConsoleWithStream<Console> | Console2;
-    [SYM_CHALK]: Chalk;
+    [SYM_CHALK]: IChalk;
     [SYM_DATA]: IOptions;
     /**
      * A simple assertion test that verifies whether `value` is truthy.
@@ -112,20 +107,20 @@ export interface Console2 extends IConsoleWithStream<Console>, IStyles {
 }
 export declare class Console2 {
     constructor(target?: Console2 | IConsoleWithStream<Console>, options?: IOptions);
-    get _stdout(): WriteStream;
-    get _stderr(): WriteStream;
+    get _stdout(): IWriteStream;
+    get _stderr(): IWriteStream;
     getStream(): {
-        _stdout: WriteStream;
-        _stderr: WriteStream;
+        _stdout: IWriteStream;
+        _stderr: IWriteStream;
     };
-    get chalk(): Chalk;
-    set chalk(value: Chalk);
-    get levelColor(): Level;
-    set levelColor(value: Level);
+    get chalk(): IChalk;
+    set chalk(value: IChalk);
+    get levelColor(): ILevel;
+    set levelColor(value: ILevel);
     get enabledColor(): boolean;
     set enabledColor(value: boolean);
-    get chalkOptions(): ChalkOptions;
-    set chalkOptions(value: ChalkOptions);
+    get chalkOptions(): IChalkOptions;
+    set chalkOptions(value: IChalkOptions);
     get inspectOptions(): InspectOptions;
     set inspectOptions(value: InspectOptions);
     setInspectOptions(value: InspectOptions): void;

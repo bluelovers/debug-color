@@ -4,30 +4,26 @@
 
 /// <reference types="node" />
 
-import chalk, { Chalk, Level, ChalkOptions } from 'chalk';
+import chalk from 'chalk';
 import { Console } from 'console';
 import { DateTime } from 'luxon';
 import { format as utilFormat, inherits as utilInherits } from 'util';
 import isNodeJs from './chk';
 import { methods_stdout, methods_stderr, methods } from './fill-property';
-import { IStyles, styleNames, styleNamesFn } from './styles';
-import { defaultColors, IOptions, SYM_CHALK, SYM_CONSOLE, SYM_DATA, InspectOptions } from './val';
+import { styleNames, styleNamesFn, IChalkOptions } from './styles';
+import { defaultColors, SYM_CHALK, SYM_CONSOLE, SYM_DATA } from './val';
 import { hasConsoleStream, isForceColor } from './util';
-import WriteStream = NodeJS.WriteStream;
 
-export type IConsoleWithStream<T extends object = Console> = T & {
-	_stdout?: WriteStream;
-	_stderr?: WriteStream;
-}
+import { IChalk, IOptions, IStyles, IConsoleWithStream, InspectOptions, ILevel, IWriteStream } from './types';
 
-export { InspectOptions };
+export * from './types';
 
 export interface Console2 extends IConsoleWithStream<Console>, IStyles
 {
 	(...argv): void
 
 	[SYM_CONSOLE]: IConsoleWithStream<Console> | Console2;
-	[SYM_CHALK]: Chalk;
+	[SYM_CHALK]: IChalk;
 
 	[SYM_DATA]: IOptions
 
@@ -134,7 +130,7 @@ export class Console2
 	{
 		this[SYM_CONSOLE] = target || console;
 
-		if (options && options.chalkOptions)
+		if (options?.chalkOptions)
 		{
 			this[SYM_CHALK] = chalk.constructor(options.chalkOptions);
 		}
@@ -190,7 +186,7 @@ export class Console2
 			this[SYM_CHALK].enabled = true;
 		}
 
-		if (this[SYM_DATA].inspectOptions && this[SYM_DATA].inspectOptions.depth < 0)
+		if (this[SYM_DATA].inspectOptions?.depth < 0)
 		{
 			this[SYM_DATA].inspectOptions.depth = null;
 		}
@@ -207,14 +203,14 @@ export class Console2
 	}
 
 	getStream(): {
-		_stdout: WriteStream;
-		_stderr: WriteStream;
+		_stdout: IWriteStream;
+		_stderr: IWriteStream;
 	}
 	{
 		if (this[SYM_DATA].stream)
 		{
-			let _stdout: WriteStream;
-			let _stderr: WriteStream;
+			let _stdout: IWriteStream;
+			let _stderr: IWriteStream;
 
 			if (this[SYM_CONSOLE] instanceof Console2)
 			{
@@ -245,7 +241,7 @@ export class Console2
 		this[SYM_CHALK] = value
 	}
 
-	get levelColor(): Level
+	get levelColor(): ILevel
 	{
 		return this[SYM_CHALK].level
 	}
@@ -265,7 +261,7 @@ export class Console2
 		this[SYM_CHALK].enabled = value
 	}
 
-	get chalkOptions()
+	get chalkOptions(): IChalkOptions
 	{
 		return this[SYM_DATA].chalkOptions
 	}
@@ -436,7 +432,7 @@ export class Console2
 
 		arr.push(o);
 
-		if (arr.length && data.colors && data.colors[name])
+		if (arr.length && data.colors?.[name])
 		{
 			let c: any = data.colors[name];
 
