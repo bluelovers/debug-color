@@ -35,7 +35,7 @@ export function createFnChalkByConsole<CI extends Console2>(console: CI)
 
 export function chalkByConsoleMaybe<CI extends Console2>(console: CI): IChalk
 {
-	return console.chalk ?? chalk
+	return console?.chalk ?? chalk
 }
 
 export function createChalkStyleLog<CI extends Console2>(console: CI, name: string, failBack = 'log')
