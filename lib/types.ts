@@ -5,7 +5,6 @@
 import { Chalk, Level, ChalkOptions, Chalk as IChalk, Level as ILevel, ChalkOptions as IChalkOptions } from 'chalk';
 import { DateTime } from 'luxon';
 import { InspectOptions } from "util";
-import { Console } from "console";
 
 export type { InspectOptions } from 'util';
 
@@ -13,6 +12,8 @@ export type { Chalk, Level, ChalkOptions }
 export type { IChalk, ILevel, IChalkOptions }
 
 import IWriteStream = NodeJS.WriteStream;
+import { methods } from './fill-property';
+import { ICrossConsole, IMethods } from './types/CrossConsole';
 
 export type { IWriteStream }
 
@@ -194,3 +195,9 @@ export type IConsoleWithStream<T extends object = Console> = T & {
 export type IStylesNameWithoutFn = Exclude<keyof IStyles, IStylesFnNames>
 
 export type IStylesNamesWithoutFn = IStylesNameWithoutFn[]
+
+export type IFillProperty<T, P extends string, U> = Record<Exclude<IMethods, keyof T>, U>
+
+export type IValueOfArray<T extends any[]> = T extends (infer U)[] ? U : never;
+
+export type IFillPropertyAuto<T extends Console> = Pick<ICrossConsole, Exclude<IMethods, keyof T>>

@@ -1,10 +1,10 @@
 /**
  * Created by user on 2018/6/29/029.
  */
-import Console from 'console';
+import { IFillProperty, IFillPropertyAuto, IValueOfArray } from './types';
+import { IMethods } from './types/CrossConsole';
 
-function noop(...argv): void
-function noop() {}
+function noop(...argv): void {}
 
 export const methods_stdout = [
 
@@ -61,22 +61,32 @@ export const methods_stderr = [
 type ValueOf<T> = Exclude<T[keyof T], number | Function>;
 
 export const methods = [].concat(
-	methods_stdout,
-	methods_stderr,
-	methods_inspector,
-	methods_other,
-	methods_output,
+		methods_stdout,
+		methods_stderr,
+		methods_inspector,
+		methods_other,
+		methods_output,
 	) as (
-	ValueOf<typeof methods_stdout>
-	| ValueOf<typeof methods_stderr>
-	| ValueOf<typeof methods_inspector>
-	| ValueOf<typeof methods_other>
-	| ValueOf<typeof methods_output>
+		ValueOf<typeof methods_stdout>
+		| ValueOf<typeof methods_stderr>
+		| ValueOf<typeof methods_inspector>
+		| ValueOf<typeof methods_other>
+		| ValueOf<typeof methods_output>
 		)[]
 ;
 
-export function fillProperty<T = Console>(target: Console = console, ls = methods, fn = noop)
+export function fillProperty<T extends object = Console, P extends string[] = IMethods[], U extends (...argv: any) => any = (...argv: any) => void>(target?: T,
+	ls?: P,
+	fn?: U,
+): T & IFillProperty<T, IValueOfArray<P>, U>
 {
+	// @ts-ignore
+	target ??= console;
+	// @ts-ignore
+	ls ??= methods;
+	// @ts-ignore
+	fn ??= noop;
+
 	ls.forEach(function (method)
 	{
 		if (!(method in target))
@@ -85,7 +95,7 @@ export function fillProperty<T = Console>(target: Console = console, ls = method
 		}
 	});
 
-	return target
+	return target as any
 }
 
 export default fillProperty;

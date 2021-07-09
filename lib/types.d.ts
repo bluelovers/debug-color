@@ -9,6 +9,7 @@ export type { InspectOptions } from 'util';
 export type { Chalk, Level, ChalkOptions };
 export type { IChalk, ILevel, IChalkOptions };
 import IWriteStream = NodeJS.WriteStream;
+import { ICrossConsole, IMethods } from './types/CrossConsole';
 export type { IWriteStream };
 export declare type IOptionsColorsProp = 'debug' | 'error' | 'info' | 'log' | 'trace' | 'warn' | 'success' | 'ok' | 'exception' | 'fail';
 export declare type IStylesFnNames = 'rgb' | 'hsl' | 'hsv' | 'hwb' | 'bgHex' | 'bgKeyword' | 'bgRgb' | 'bgHsl' | 'bgHsv' | 'bgHwb' | 'hex' | 'keyword';
@@ -128,3 +129,6 @@ export declare type IConsoleWithStream<T extends object = Console> = T & {
 };
 export declare type IStylesNameWithoutFn = Exclude<keyof IStyles, IStylesFnNames>;
 export declare type IStylesNamesWithoutFn = IStylesNameWithoutFn[];
+export declare type IFillProperty<T, P extends string, U> = Record<Exclude<IMethods, keyof T>, U>;
+export declare type IValueOfArray<T extends any[]> = T extends (infer U)[] ? U : never;
+export declare type IFillPropertyAuto<T extends Console> = Pick<ICrossConsole, Exclude<IMethods, keyof T>>;

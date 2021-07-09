@@ -15,10 +15,11 @@ import { defaultColors, SYM_CHALK, SYM_CONSOLE, SYM_DATA } from './val';
 import { hasConsoleStream, isForceColor } from './util';
 
 import { IChalk, IOptions, IStyles, IConsoleWithStream, InspectOptions, ILevel, IWriteStream } from './types';
+import { ICrossConsole } from './types/CrossConsole';
 
 export * from './types';
 
-export interface Console2 extends IConsoleWithStream<Console>, IStyles
+export interface Console2 extends IConsoleWithStream<Console>, IStyles, ICrossConsole
 {
 	(...argv): void
 
@@ -54,7 +55,7 @@ export interface Console2 extends IConsoleWithStream<Console>, IStyles
 	 * Uses {@link util.inspect()} on `obj` and prints the resulting string to `stdout`.
 	 * This function bypasses any custom `inspect()` function defined on `obj`.
 	 */
-	dir(obj: any, options?: NodeJS.InspectOptions): void;
+	dir(obj: any, options?: InspectOptions): void;
 	/**
 	 * This method calls {@link console.log()} passing it the arguments received. Please note that this method does not produce any XML formatting
 	 */
