@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.5](https://github.com/bluelovers/debug-color/compare/debug-color2@1.2.4...debug-color2@1.2.5) (2021-07-10)
+
+
+### 🐛　Bug Fixes
+
+* support `Promise.resolve(999).then(console.log)` ([f5388c3](https://github.com/bluelovers/debug-color/commit/f5388c3fce5a497accaec4f78e67636065bbb748))
+
+
+
+
+
 ## 1.2.4 (2021-07-09)
 
 
