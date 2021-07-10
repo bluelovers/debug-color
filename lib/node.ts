@@ -12,10 +12,17 @@ import isNodeJs from './chk';
 import { methods_stdout, methods_stderr, methods } from './fill-property';
 import { styleNames, styleNamesFn, IChalkOptions } from './styles';
 import { defaultColors, SYM_CHALK, SYM_CONSOLE, SYM_DATA } from './val';
-import { hasConsoleStream, isForceColor } from './util';
+import { arrayIncludes, hasConsoleStream, isForceColor } from './util';
 
 import { IChalk, IOptions, IStyles, IConsoleWithStream, InspectOptions, ILevel, IWriteStream } from './types';
 import { ICrossConsole } from './types/CrossConsole';
+import { bindBaseMethods } from './util/bindBaseMethods';
+import { _logArgv, _logErrorArgv } from './console/_logArgv';
+import { _time } from './console/_time';
+import { _logFormat } from './console/_logFormat';
+import { _labelFormat } from './console/_labelFormat';
+import { _log } from './console/_log';
+import { _get_enabled } from './console/_get_enabled';
 
 export * from './types';
 
@@ -191,6 +198,8 @@ export class Console2
 		{
 			this[SYM_DATA].inspectOptions.depth = null;
 		}
+
+		bindBaseMethods(this);
 	}
 
 	get _stdout()
@@ -289,12 +298,12 @@ export class Console2
 
 	get enabled()
 	{
-		return this[SYM_DATA].enabled !== false
+		return _get_enabled(this[SYM_DATA].enabled)
 	}
 
 	set enabled(value)
 	{
-		this[SYM_DATA].enabled = value === true
+		this[SYM_DATA].enabled = _get_enabled(value)
 	}
 
 	setOptions(options: IOptions)
@@ -338,6 +347,9 @@ export class Console2
 		o[SYM_DATA] = self[SYM_DATA];
 
 		// @ts-ignore
+		bindBaseMethods(o);
+
+		// @ts-ignore
 		return o;
 	}
 
@@ -350,7 +362,7 @@ export class Console2
 
 	protected _logFormat(format, ...args)
 	{
-		return utilFormat(format, ...args);
+		return _logFormat(format, ...args);
 	}
 
 	success(...argv)
@@ -370,97 +382,27 @@ export class Console2
 
 	protected _labelFormat(data: Parameters<IOptions["labelFormatFn"]>[0])
 	{
-		if (this[SYM_DATA].labelFormatFn)
-		{
-			return this[SYM_DATA].labelFormatFn(data);
-		}
-
-		return `[${data.name.toString().toUpperCase()}]`
+		return _labelFormat.call(this, data)
 	}
 
-	protected _log(name: string, argv, failBack = 'log')
+	protected _logErrorArgv(argv: any[], name: string = 'error', failBack = 'error')
 	{
-		if (!this.enabled)
-		{
-			return;
-		}
+		return _logErrorArgv.call(this, argv, name, failBack)
+	}
 
-		// @ts-ignore
-		let s = this._logFormat(...argv);
-		let o = this[SYM_CHALK](s);
+	protected _logArgv(argv: any[], name: string = 'log', failBack = 'log')
+	{
+		return _logArgv.call(this, argv, name, failBack);
+	}
 
-		let arr = [];
+	protected _log(name: string, argv: any[], failBack = 'log')
+	{
+		return _log.call(this, name, argv, failBack)
+	}
 
-		let data = this[SYM_DATA];
-
-		if (data.time)
-		{
-			let ret = this._time({
-				name,
-				argv,
-				failBack,
-			});
-
-			if (ret != null)
-			{
-				arr.push(ret);
-			}
-		}
-
-		if (data.label)
-		{
-			let _ok = true;
-
-			if (Array.isArray(data.label) && !data.label.includes(name))
-			{
-				_ok = false;
-			}
-
-			if (_ok)
-			{
-				let ret = this._labelFormat({
-					name,
-					argv,
-					failBack,
-				});
-
-				if (ret != null)
-				{
-					arr.push(ret);
-				}
-			}
-		}
-
-		arr.push(o);
-
-		if (arr.length && data.colors?.[name])
-		{
-			let c: any = data.colors[name];
-
-			if (typeof c === 'string')
-			{
-				c = chalk[c];
-			}
-
-			arr = arr.map(v => c(v));
-		}
-
-		if (process.platform == 'win32' && this.enabledColor)
-		{
-			/**
-			 * @FIXME fix bug on windows when after bold
-			 *
-			 * https://github.com/chalk/chalk/issues/145#issuecomment-288985903
-			 */
-			arr = arr.map(v => '\u001B[0m' + v + '\u001B[0m');
-		}
-
-		if (!(name in this[SYM_CONSOLE]))
-		{
-			name = failBack;
-		}
-
-		return this[SYM_CONSOLE][name](...arr);
+	protected _logError(name: string, argv, failBack = 'error')
+	{
+		return this._log(name, argv, failBack)
 	}
 
 	protected _chalkStyleMethod(name)
@@ -477,18 +419,7 @@ export class Console2
 
 	protected _time(data?: Parameters<IOptions["labelFormatFn"]>[0])
 	{
-		if (this[SYM_DATA].timeFormatFn)
-		{
-			let data2: Parameters<IOptions["timeFormatFn"]>[0] = {
-				...data,
-				failBackTimeFormat: this[SYM_DATA].timeFormat || '[HH:mm:ss.SSS]',
-				date: DateTime.local(),
-			};
-
-			return this[SYM_DATA].timeFormatFn(data2);
-		}
-
-		return DateTime.local().toFormat(this[SYM_DATA].timeFormat || '[HH:mm:ss.SSS]');
+		return _time.call(this, data)
 	}
 }
 
@@ -578,25 +509,25 @@ methods.forEach(function (name)
 			}
 		};
 	}
-	else if (methods_stdout.includes(name as any))
+	else if (arrayIncludes(methods_stdout,name))
 	{
-		Console2.prototype[name as any] = function chalkStyleLogStdout(...argv)
+		Console2.prototype[name] = function chalkStyleLogStdout(...argv)
 		{
 			// @ts-ignore
-			return this._log(name, argv)
+			return (this._log ?? Console2.prototype._log).call(this, name, argv)
 		};
 	}
-	else if (methods_stderr.includes(name as any))
+	else if (arrayIncludes(methods_stderr,name))
 	{
-		Console2.prototype[name as any] = function chalkStyleLogStderr(...argv)
+		Console2.prototype[name] = function chalkStyleLogStderr(...argv)
 		{
 			// @ts-ignore
-			return this._log(name, argv, 'error')
+			return (this._logError ?? Console2.prototype._logError).call(this,name, argv, 'error')
 		};
 	}
 	else
 	{
-		Console2.prototype[name as any] = function chalkStyleLogOthers(...argv)
+		Console2.prototype[name] = function chalkStyleLogOthers(...argv)
 		{
 			if (!this.enabled)
 			{

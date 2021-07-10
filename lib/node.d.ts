@@ -136,7 +136,16 @@ export declare class Console2 {
     ok(...argv: any[]): any;
     fail(...argv: any[]): any;
     protected _labelFormat(data: Parameters<IOptions["labelFormatFn"]>[0]): string;
-    protected _log(name: string, argv: any, failBack?: string): any;
+    protected _logErrorArgv(argv: any[], name?: string, failBack?: string): {
+        name: string;
+        arr: any[];
+    };
+    protected _logArgv(argv: any[], name?: string, failBack?: string): {
+        name: string;
+        arr: any[];
+    };
+    protected _log(name: string, argv: any[], failBack?: string): any;
+    protected _logError(name: string, argv: any, failBack?: string): any;
     protected _chalkStyleMethod(name: any): (this: Console2, ...argv: any[]) => Console2;
     protected _time(data?: Parameters<IOptions["labelFormatFn"]>[0]): string;
 }

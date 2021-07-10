@@ -3,8 +3,10 @@
  */
 
 import chalk, { Level } from 'chalk';
-import envBool from 'env-bool';
-import Console2, { IConsoleWithStream, IChalk } from './node';
+import { envBool } from 'env-bool';
+import { Console2 } from './node';
+import { IConsoleWithStream, IChalk } from './types';
+import { ITSArrayListMaybeReadonly } from 'ts-type/lib/type/base';
 
 export function isForceColor(env?): boolean | number | Level
 {
@@ -66,6 +68,11 @@ export function createChalkStyleLog<CI extends Console2>(console: CI, name: stri
 export function hasConsoleStream(target: IConsoleWithStream<object>)
 {
 	return !!(target._stdout && target._stderr);
+}
+
+export function arrayIncludes<T>(arr: ITSArrayListMaybeReadonly<T>, value: any): value is T
+{
+	return arr.includes(value as any)
 }
 
 export default exports as typeof import('./util');

@@ -8,6 +8,6 @@ export declare const methods_output: readonly ["table", "dir", "dirxml"];
 export declare const methods_other: readonly ["clear", "group", "groupCollapsed", "groupEnd", "time", "timeEnd", "count"];
 export declare const methods_inspector: readonly ["profile", "profileEnd", "timeStamp", "markTimeline", "timeline", "timelineEnd"];
 export declare const methods_stderr: readonly ["assert", "error", "trace", "warn", "exception"];
-export declare const methods: ("debug" | "info" | "log" | "table" | "dir" | "dirxml" | "clear" | "group" | "groupCollapsed" | "groupEnd" | "time" | "timeEnd" | "count" | "profile" | "profileEnd" | "timeStamp" | "markTimeline" | "timeline" | "timelineEnd" | "assert" | "error" | "trace" | "warn" | "exception")[];
+export declare const methods: ("debug" | "error" | "info" | "log" | "trace" | "warn" | "exception" | "assert" | "clear" | "count" | "dir" | "dirxml" | "group" | "groupCollapsed" | "groupEnd" | "table" | "time" | "timeEnd" | "timeStamp" | "profile" | "profileEnd" | "markTimeline" | "timeline" | "timelineEnd")[];
 export declare function fillProperty<T extends object = Console, P extends string[] = IMethods[], U extends (...argv: any) => any = (...argv: any) => void>(target?: T, ls?: P, fn?: U): T & IFillProperty<T, IValueOfArray<P>, U>;
 export default fillProperty;

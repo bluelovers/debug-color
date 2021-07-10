@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`describe color._logArgv 1`] = `
+Object {
+  "arr": Array [
+    "[0m[35m{ data: { a: 777 } }[39m[0m",
+  ],
+  "name": "log",
+}
+`;
+
+exports[`describe console._logArgv 1`] = `
+Object {
+  "arr": Array [
+    "[0m{ data: { a: 777 } }[0m",
+  ],
+  "name": "log",
+}
+`;
+
+exports[`describe console._logArgv 2`] = `
+Object {
+  "arr": Array [
+    "[0m[35m{ data: { a: 777 } }[39m[0m",
+  ],
+  "name": "log",
+}
+`;

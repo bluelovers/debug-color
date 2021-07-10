@@ -11,4 +11,4 @@ export interface ICrossConsole extends Console
 	timelineEnd(): void;
 }
 
-export type IMethods = ITSExtractKeyof<ITSMemberMethods<ICrossConsole>, string>
+export type IMethods = Exclude<ITSExtractKeyof<ITSMemberMethods<ICrossConsole>, string>, 'constructor' | 'new' | 'prototype' | 'Console' | 'length'>

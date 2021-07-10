@@ -8,6 +8,7 @@ export declare const SYM_CHALK: unique symbol;
 export declare const SYM_CONSOLE: unique symbol;
 export declare const SYM_EVENT: unique symbol;
 export declare const SYM_DATA: unique symbol;
+export declare const SYM_THIS: unique symbol;
 export declare const defaultColors: Partial<IOptions["colors"]>;
 declare const _default: typeof import("./val");
 export default _default;

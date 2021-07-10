@@ -15,6 +15,8 @@ export const SYM_EVENT = Symbol.for('event');
 
 export const SYM_DATA = Symbol.for('data');
 
+export const SYM_THIS = Symbol.for('console.this');
+
 export const defaultColors: Partial<IOptions["colors"]> = {
 	error: 'red',
 	exception: 'red',

@@ -5,4 +5,4 @@ export interface ICrossConsole extends Console {
     timeline(label?: string): void;
     timelineEnd(): void;
 }
-export declare type IMethods = ITSExtractKeyof<ITSMemberMethods<ICrossConsole>, string>;
+export declare type IMethods = Exclude<ITSExtractKeyof<ITSMemberMethods<ICrossConsole>, string>, 'constructor' | 'new' | 'prototype' | 'Console' | 'length'>;
