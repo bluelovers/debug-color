@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.6](https://github.com/bluelovers/debug-color/compare/debug-color2@1.2.5...debug-color2@1.2.6) (2021-07-20)
+
+
+### 🐛　Bug Fixes
+
+* bug of set console.enable = undefined ([2d57bfa](https://github.com/bluelovers/debug-color/commit/2d57bfa5325588e5827d8e220acb79d90ee52900))
+
+
+### 📦　Code Refactoring
+
+* setBindThis ([385e0a5](https://github.com/bluelovers/debug-color/commit/385e0a586a21245a634c9bdc3f24449d6c8e030f))
+
+
+
+
+
 ## [1.2.5](https://github.com/bluelovers/debug-color/compare/debug-color2@1.2.4...debug-color2@1.2.5) (2021-07-10)
 
 
