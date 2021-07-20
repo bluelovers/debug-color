@@ -31,13 +31,7 @@ function _get<P extends IMethods>(target: Console2, name: P): Console2[P]
 		return oldFn.apply(self, argv)
 	}
 
-	Object.defineProperty(fn, SYM_THIS, {
-		get()
-		{
-			return target
-		},
-		enumerable: false,
-	})
+	setBindThis(fn, target);
 
 	Object.defineProperty(fn, 'name', {
 		value: name,
@@ -45,6 +39,19 @@ function _get<P extends IMethods>(target: Console2, name: P): Console2[P]
 	})
 
 	return fn
+}
+
+export function setBindThis(target, me)
+{
+	Object.defineProperty(target, SYM_THIS, {
+		get()
+		{
+			return me
+		},
+		enumerable: false,
+	})
+
+	return target
 }
 
 export function bindBaseMethods(target)
