@@ -16,13 +16,13 @@ import { arrayIncludes, hasConsoleStream, isForceColor } from './util';
 
 import { IChalk, IOptions, IStyles, IConsoleWithStream, InspectOptions, ILevel, IWriteStream } from './types';
 import { ICrossConsole } from './types/CrossConsole';
-import { bindBaseMethods } from './util/bindBaseMethods';
+import { bindBaseMethods, setBindThis } from './util/bindBaseMethods';
 import { _logArgv, _logErrorArgv } from './console/_logArgv';
 import { _time } from './console/_time';
 import { _logFormat } from './console/_logFormat';
 import { _labelFormat } from './console/_labelFormat';
 import { _log } from './console/_log';
-import { _get_enabled } from './console/_get_enabled';
+import { _get_enabled, _set_enabled } from './console/_get_enabled';
 
 export * from './types';
 
@@ -268,7 +268,7 @@ export class Console2
 
 	set enabledColor(value)
 	{
-		this[SYM_CHALK].enabled = value
+		this[SYM_CHALK].enabled = value ?? false
 	}
 
 	get chalkOptions(): IChalkOptions
@@ -303,7 +303,7 @@ export class Console2
 
 	set enabled(value)
 	{
-		this[SYM_DATA].enabled = _get_enabled(value)
+		this[SYM_DATA].enabled = _set_enabled(value ?? true)
 	}
 
 	setOptions(options: IOptions)
