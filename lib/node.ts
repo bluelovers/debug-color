@@ -303,7 +303,7 @@ export class Console2
 
 	set enabled(value)
 	{
-		this[SYM_DATA].enabled = _set_enabled(value ?? true)
+		this[SYM_DATA].enabled = _set_enabled(value ?? false)
 	}
 
 	setOptions(options: IOptions)
