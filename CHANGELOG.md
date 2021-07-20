@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.7](https://github.com/bluelovers/debug-color/compare/debug-color2@1.2.6...debug-color2@1.2.7) (2021-07-20)
+
+
+### 🐛　Bug Fixes
+
+* bug of `console.enabled = void 0;` again ([7537c43](https://github.com/bluelovers/debug-color/commit/7537c4324d373fd3caab1841a0896579e07b3650))
+
+
+
+
+
 ## [1.2.6](https://github.com/bluelovers/debug-color/compare/debug-color2@1.2.5...debug-color2@1.2.6) (2021-07-20)
 
 
