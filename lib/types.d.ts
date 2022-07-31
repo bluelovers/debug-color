@@ -2,6 +2,7 @@
  * Created by user on 2020/6/11.
  */
 /// <reference types="node" />
+/// <reference types="node" />
 import { Chalk, Level, ChalkOptions, Chalk as IChalk, Level as ILevel, ChalkOptions as IChalkOptions } from 'chalk';
 import { DateTime } from 'luxon';
 import { InspectOptions } from "util";

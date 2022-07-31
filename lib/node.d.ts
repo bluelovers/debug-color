@@ -2,6 +2,7 @@
  * Created by user on 2018/7/2/002.
  */
 /// <reference types="node" />
+/// <reference types="node" />
 import { IChalkOptions } from './styles';
 import { SYM_CHALK, SYM_CONSOLE, SYM_DATA } from './val';
 import { IChalk, IOptions, IStyles, IConsoleWithStream, InspectOptions, ILevel, IWriteStream } from './types';

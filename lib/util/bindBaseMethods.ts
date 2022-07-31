@@ -6,10 +6,13 @@ import { methods } from '../fill-property';
 import { SYM_THIS } from '../val';
 import { IMethods } from '../types/CrossConsole';
 
+// @ts-ignore
 function _get<P extends IMethods>(target: Console2, name: P): Console2[P]
 {
+	// @ts-ignore
 	let oldFn: Console2[P] = target[name];
 
+	// @ts-ignore
 	let fn: Console2[P] = function (this: Console2, ...argv: any[])
 	{
 		let self: Console2 = this;

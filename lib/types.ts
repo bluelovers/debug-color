@@ -200,4 +200,5 @@ export type IFillProperty<T, P extends string, U> = Record<Exclude<IMethods, key
 
 export type IValueOfArray<T extends any[]> = T extends (infer U)[] ? U : never;
 
+// @ts-ignore
 export type IFillPropertyAuto<T extends Console> = Pick<ICrossConsole, Exclude<IMethods, keyof T>>

@@ -9,7 +9,7 @@ const util_1 = require("./lib/util");
 const auto_1 = require("./lib/auto");
 Object.defineProperty(exports, "Console2", { enumerable: true, get: function () { return auto_1.Console2; } });
 Object.defineProperty(exports, "Console", { enumerable: true, get: function () { return auto_1.Console2; } });
-(0, tslib_1.__exportStar)(require("./lib/types"), exports);
+tslib_1.__exportStar(require("./lib/types"), exports);
 var util_2 = require("./lib/util");
 Object.defineProperty(exports, "createChalkStyleLog", { enumerable: true, get: function () { return util_2.createChalkStyleLog; } });
 Object.defineProperty(exports, "hasConsoleStream", { enumerable: true, get: function () { return util_2.hasConsoleStream; } });
