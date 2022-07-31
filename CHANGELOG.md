@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://github.com/bluelovers/debug-color/compare/debug-color2@1.2.7...debug-color2@1.3.1) (2022-07-31)
+
+
+### 📌　Dependencies
+
+* update deps ([0564e82](https://github.com/bluelovers/debug-color/commit/0564e8205914839c5b2dfc7912a47d79c03e555d))
+
+
+
+
+
 ## [1.2.7](https://github.com/bluelovers/debug-color/compare/debug-color2@1.2.6...debug-color2@1.2.7) (2021-07-20)
 
 
