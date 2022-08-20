@@ -1,6 +1,6 @@
 {
   "name": "debug-color2",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "colorize console log, this module can work with require('debug')",
   "keywords": [
     "256",
@@ -25,7 +25,8 @@
     "terminal",
     "text",
     "tty",
-    "xterm"
+    "xterm",
+    "create-by-yarn-tool"
   ],
   "homepage": "https://github.com/bluelovers/debug-color#readme",
   "bugs": {
@@ -37,48 +38,72 @@
   },
   "license": "ISC",
   "author": "bluelovers",
+  "sideEffects": false,
   "main": "index.js",
+  "types": "./index.d.ts",
+  "typings": "./index.d.ts",
   "directories": {
     "lib": "lib",
     "test": "test"
   },
   "scripts": {
+    "pretest": "echo pretest",
     "test": "yarn run test:demo && yarn run test:jest",
     "test:demo": "ts-node ./test/demo.ts",
     "test:jest": "jest",
+    "test:jest:clearCache": "jest --clearCache",
+    "install:frozenLockfile": "yarn-tool install --frozen-lockfile",
+    "install:resetLockfile": "yarn-tool install --reset-lockfile",
+    "ci:install": "yarn install --frozen-lockfile && yarn add -W typescript@next jest ts-jest ts-node ynpx lerna yarn-tool",
+    "ci:build": "echo ci:build",
     "npm:publish": "yarn run preversion && npm publish",
     "npm:publish:bump": "yarn run preversion && yarn-tool version && npm publish",
-    "prepublish:lockfile": "npx sync-lockfile .",
     "preversion": "yarn run test",
+    "version": "echo version",
+    "version:bump": "yarn-tool version",
+    "postversion": "echo postversion",
+    "prepublish": "echo prepublish",
+    "prepublish:lockfile": "npx sync-lockfile .",
+    "prepare": "echo prepare",
+    "prepublishOnly": "yarn run preversion",
+    "prepublishOnly:check-bin": "ynpx --quiet @yarn-tool/check-pkg-bin",
+    "prepublishOnly:update": "yarn run ncu && yarn run sort-package-json",
+    "prepack": "echo prepack",
+    "pack": "echo pack",
+    "postpack": "echo postpack",
+    "publish": "echo publish",
     "postpublish": "yarn run postpublish:changelog && yarn run postpublish:git:commit && yarn run postpublish:git:tag && yarn run postpublish:git:push",
     "postpublish:changelog": "ynpx --quiet @yarn-tool/changelog && git add ./CHANGELOG.md",
     "postpublish:git:commit": "git commit -m \"chore(release): publish\" . & echo postpublish:git:commit",
     "postpublish:git:push": "git push --follow-tags",
     "postpublish:git:tag": "ynpx --quiet @yarn-tool/tag",
+    "postpublishOnly": "echo postpublishOnly",
     "ncu": "yarn-tool ncu -u",
     "sort-package-json": "yarn-tool sort",
     "tsc:default": "tsc -p tsconfig.json",
-    "tsc:esm": "tsc -p tsconfig.esm.json"
+    "tsc:esm": "tsc -p tsconfig.esm.json",
+    "tsc:showConfig": "ynpx get-current-tsconfig -p"
   },
   "dependencies": {
     "@types/luxon": "*",
     "chalk": "<3 >=2",
     "env-bool": "^2.0.1",
     "luxon": "^3.0.1",
-    "ts-type": "^2.1.8",
+    "ts-type": "^2.1.10",
     "tslib": "^2"
   },
   "devDependencies": {
     "@bluelovers/tsconfig": "^1.0.30",
     "@types/debug": "^4.1.7",
-    "@types/jest": "^28.1.6",
-    "@types/node": "^18.6.3",
+    "@types/jest": "^28.1.7",
+    "@types/node": "^18.7.8",
     "debug": "^4.3.4",
     "jest": "^28.1.3",
-    "ts-jest": "^28.0.7"
+    "ts-jest": "^28.0.8"
   },
   "peerDependencies": {
     "debug": "^4.3.4"
   },
+  "packageManager": "yarn@1.22.19",
   "_types": "debug-color2.d.ts"
 }

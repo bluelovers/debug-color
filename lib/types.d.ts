@@ -12,9 +12,9 @@ export type { IChalk, ILevel, IChalkOptions };
 import IWriteStream = NodeJS.WriteStream;
 import { ICrossConsole, IMethods } from './types/CrossConsole';
 export type { IWriteStream };
-export declare type IOptionsColorsProp = 'debug' | 'error' | 'info' | 'log' | 'trace' | 'warn' | 'success' | 'ok' | 'exception' | 'fail';
-export declare type IStylesFnNames = 'rgb' | 'hsl' | 'hsv' | 'hwb' | 'bgHex' | 'bgKeyword' | 'bgRgb' | 'bgHsl' | 'bgHsv' | 'bgHwb' | 'hex' | 'keyword';
-export declare type IStylesColorNames = Exclude<keyof IStyles, IStylesFnNames>;
+export type IOptionsColorsProp = 'debug' | 'error' | 'info' | 'log' | 'trace' | 'warn' | 'success' | 'ok' | 'exception' | 'fail';
+export type IStylesFnNames = 'rgb' | 'hsl' | 'hsv' | 'hwb' | 'bgHex' | 'bgKeyword' | 'bgRgb' | 'bgHsl' | 'bgHsv' | 'bgHwb' | 'hex' | 'keyword';
+export type IStylesColorNames = Exclude<keyof IStyles, IStylesFnNames>;
 export interface IStyles {
     rgb(r: number, g: number, b: number): this;
     hsl(h: number, s: number, l: number): this;
@@ -124,12 +124,12 @@ export interface IChalkLike {
     (string: any, ...argv: any[]): string;
     (...argv: any[]): string;
 }
-export declare type IConsoleWithStream<T extends object = Console> = T & {
+export type IConsoleWithStream<T extends object = Console> = T & {
     _stdout?: IWriteStream;
     _stderr?: IWriteStream;
 };
-export declare type IStylesNameWithoutFn = Exclude<keyof IStyles, IStylesFnNames>;
-export declare type IStylesNamesWithoutFn = IStylesNameWithoutFn[];
-export declare type IFillProperty<T, P extends string, U> = Record<Exclude<IMethods, keyof T>, U>;
-export declare type IValueOfArray<T extends any[]> = T extends (infer U)[] ? U : never;
-export declare type IFillPropertyAuto<T extends Console> = Pick<ICrossConsole, Exclude<IMethods, keyof T>>;
+export type IStylesNameWithoutFn = Exclude<keyof IStyles, IStylesFnNames>;
+export type IStylesNamesWithoutFn = IStylesNameWithoutFn[];
+export type IFillProperty<T, P extends string, U> = Record<Exclude<IMethods, keyof T>, U>;
+export type IValueOfArray<T extends any[]> = T extends (infer U)[] ? U : never;
+export type IFillPropertyAuto<T extends Console> = Pick<ICrossConsole, Exclude<IMethods, keyof T>>;
