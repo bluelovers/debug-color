@@ -3,20 +3,18 @@ export function isNodeJs()
 {
 	try
 	{
-		require('console');
-
-		// @ts-ignore
-		if (console._stdout && console._stderr)
-		{
-			return true
-		}
+		if (
+			typeof process !== 'undefined' && 
+			process.release.name.search(/node|io.js/) !== -1
+		) {
+			return true;
+      }
+		return false;
 	}
 	catch (e)
 	{
 
 	}
-
-	return false
 }
 
 export default isNodeJs
