@@ -52,5 +52,3 @@ export declare const SYM_THIS: unique symbol;
  * Define default colors for each log type
  */
 export declare const defaultColors: Partial<IOptions["colors"]>;
-declare const _default: typeof import("./val");
-export default _default;

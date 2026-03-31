@@ -1,10 +1,31 @@
 "use strict";
+/**
+ * Logger 預設實例
+ * Logger default instance
+ *
+ * 預設配置的 Console2 實例，適用於一般日誌輸出
+ * Pre-configured Console2 instance for general log output
+ *
+ * @module debug-color2/logger
+ * @created 2020/1/18
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.consoleLogger = void 0;
-/**
- * Created by user on 2020/1/18.
- */
 const auto_1 = require("./lib/auto");
+/**
+ * 預設 Logger 實例
+ * Default Logger instance
+ *
+ * 配置包含：
+ * - label: 顯示標籤
+ * - time: 顯示時間戳
+ * - colors: 啟用顏色輸出
+ *
+ * Configuration includes:
+ * - label: Show label
+ * - time: Show timestamp
+ * - colors: Enable color output
+ */
 exports.consoleLogger = new auto_1.Console2(null, {
     label: true,
     time: true,

@@ -18,6 +18,9 @@ export * from './types';
  * 從 Chalk 實例取得樣式名稱列表
  * Get style names from Chalk instance
  *
+ * 透過取得 Chalk 建構函式的 prototype，並過濾出所有可用的樣式方法名稱
+ * Obtain all available style method names by accessing Chalk constructor's prototype
+ *
  * @param chalk - Chalk 實例 / Chalk instance
  * @returns 樣式名稱陣列 / Array of style names
  */
@@ -46,5 +49,3 @@ export declare const styleNamesFn: IStylesFnNames[];
  * Styles that don't require parameters (like bold, italic)
  */
 export declare const styleNamesWithoutFn: IStylesNamesWithoutFn;
-declare const _default: typeof import("./styles");
-export default _default;

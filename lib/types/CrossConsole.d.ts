@@ -7,7 +7,8 @@
  *
  * @module debug-color2/lib/types/CrossConsole
  */
-import { ITSExtractKeyof, ITSMemberMethods } from 'ts-type/lib/helper/filter';
+import { ITSMemberMethodsV12 } from 'ts-type/lib/helper/record/member';
+import { ITSExcludeFilterKeys, ITSExtractKeysV13 } from 'ts-type/lib/helper/filter';
 /**
  * 跨平台 Console 介面
  * Cross-platform Console interface
@@ -51,4 +52,4 @@ export interface ICrossConsole extends Console {
  * 從 ICrossConsole 提取的方法名稱集合
  * Collection of method names extracted from ICrossConsole
  */
-export type IMethods = Exclude<ITSExtractKeyof<ITSMemberMethods<ICrossConsole>, string>, 'constructor' | 'new' | 'prototype' | 'Console' | 'length'>;
+export type IMethods = ITSExcludeFilterKeys<ITSExtractKeysV13<ITSMemberMethodsV12<ICrossConsole, Function, 'constructor'>, string>, "Console" | 'new' | 'prototype' | 'Console' | 'length'>;

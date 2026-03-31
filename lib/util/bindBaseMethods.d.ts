@@ -12,6 +12,9 @@
  * 設定綁定的 this 上下文
  * Set bound this context
  *
+ * 透過 Object.defineProperty 為目標函式設定一個非可列舉的屬性，用於儲存綁定的 Console2 實例
+ * Use Object.defineProperty to set a non-enumerable property on target function for storing bound Console2 instance
+ *
  * @param target - 目標函式 / Target function
  * @param me - Console2 實例 / Console2 instance
  * @returns 設定後的函式 / Configured function

@@ -51,25 +51,20 @@ export declare const methods_inspector: readonly ["profile", "profileEnd", "time
  */
 export declare const methods_stderr: readonly ["assert", "error", "trace", "warn", "exception"];
 /**
- * 取得物件值的類型
- * Get type of object values
- */
-type ValueOf<T> = Exclude<T[keyof T], number | Function>;
-/**
  * 所有 Console 方法的合併列表
  * Combined list of all Console methods
  */
-export declare const methods: (ValueOf<typeof methods_stdout> | ValueOf<typeof methods_stderr> | ValueOf<typeof methods_inspector> | ValueOf<typeof methods_other> | ValueOf<typeof methods_output>)[];
+export declare const methods: IMethods[];
 /**
  * 填充目標物件的 Console 方法
  * Fill Console methods to target object
  *
- * 為目標物件填入缺失的 Console 方法
- * Fill missing Console methods to target object
+ * 為目標物件填入缺失的 Console 方法，若目標、方法列表或預設函式未提供，則使用預設值
+ * Fill missing Console methods to target object, using defaults if target, method list, or default function not provided
  *
  * @param target - 目標物件，預設為 console / Target object, defaults to console
- * @param ls - 方法名稱列表 / List of method names
- * @param fn - 預設函式 / Default function
+ * @param ls - 方法名稱列表，預設為所有 Console 方法 / List of method names, defaults to all Console methods
+ * @param fn - 預設函式，預設為空函式 / Default function, defaults to noop
  * @returns 填充後的目標物件 / Filled target object
  */
 export declare function fillProperty<T extends object = Console, P extends string[] = IMethods[], U extends (...argv: any) => any = (...argv: any) => void>(target?: T, ls?: P, fn?: U): T & IFillProperty<T, IValueOfArray<P>, U>;

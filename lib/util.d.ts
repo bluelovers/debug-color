@@ -5,6 +5,10 @@
  * @module debug-color2/lib/util
  * @created 2018/6/29
  */
+import { Level } from 'chalk';
+import { Console2 } from './node';
+import { IConsoleWithStream, IChalk } from './types';
+import { ITSArrayListMaybeReadonly } from 'ts-type/lib/type/base';
 /**
  * 檢查是否強制啟用顏色輸出
  * Check if color output should be forced
@@ -19,10 +23,13 @@ export declare function isForceColor(env?: any): boolean | number | Level;
  *
  * @returns 顏色支援等級 / Color support level
  */
-export declare function isSupportsColor(): any;
+export declare function isSupportsColor(): Level;
 /**
  * 建立一個回調函數，可存取 Console 的 Chalk 實例
  * Create a callback function that can access Console's Chalk instance
+ *
+ * 此函數返回一个高階函數，用於在回調中存取 Console2 實例的 Chalk 實例
+ * This function returns a higher-order function to access the Chalk instance of Console2 in a callback
  *
  * @param console - Console2 實例 / Console2 instance
  * @returns 回調函數 / Callback function
@@ -31,6 +38,9 @@ export declare function createFnChalkByConsole<CI extends Console2>(console: CI)
 /**
  * 取得 Chalk 實例，若無 Console2 實例則回退到預設 chalk
  * Get Chalk instance, fallback to default chalk if no Console2 instance
+ *
+ * 此函數提供了一個安全取得 Chalk 實例的方式，若傳入的 Console2 實例不存在 Chalk，則使用預設的 chalk
+ * This function provides a safe way to get a Chalk instance, using default chalk if the passed Console2 doesn't have one
  *
  * @param console - Console2 實例（可選）/ Console2 instance (optional)
  * @returns Chalk 實例 / Chalk instance
@@ -63,5 +73,3 @@ export declare function hasConsoleStream(target: IConsoleWithStream<object>): bo
  * @returns 是否包含 / Whether contains
  */
 export declare function arrayIncludes<T>(arr: ITSArrayListMaybeReadonly<T>, value: any): value is T;
-declare const _default: typeof import("./util");
-export default _default;
