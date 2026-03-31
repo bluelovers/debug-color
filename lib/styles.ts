@@ -22,8 +22,20 @@ export * from './types';
  * 從 Chalk 實例取得樣式名稱列表
  * Get style names from Chalk instance
  *
+ * 透過取得 Chalk 建構函式的 prototype，並過濾出所有可用的樣式方法名稱
+ * Obtain all available style method names by accessing Chalk constructor's prototype
+ *
  * @param chalk - Chalk 實例 / Chalk instance
  * @returns 樣式名稱陣列 / Array of style names
+ *
+ * @example
+ * ```typescript
+ * import chalk from 'chalk';
+ * import { getStyleNamesByChalk } from 'debug-color2/lib/styles';
+ *
+ * const names = getStyleNamesByChalk(chalk);
+ * // ['bold', 'italic', 'underline', 'inverse', 'white', 'grey', 'black', ...]
+ * ```
  */
 export function getStyleNamesByChalk(chalk): (keyof IStyles)[]
 {
@@ -41,6 +53,13 @@ export function getStyleNamesByChalk(chalk): (keyof IStyles)[]
  *
  * 從 Chalk Prototype 取得的樣式名稱列表
  * List of style names obtained from Chalk Prototype
+ *
+ * @example
+ * ```typescript
+ * import { styleNames } from 'debug-color2/lib/styles';
+ * console.log(styleNames);
+ * // ['bold', 'italic', 'underline', 'inverse', 'hidden', 'visible', 'black', ...]
+ * ```
  */
 export const styleNames = getStyleNamesByChalk(chalk);
 
@@ -50,6 +69,13 @@ export const styleNames = getStyleNamesByChalk(chalk);
  *
  * 需要傳入參數的樣式（如顏色值）
  * Styles that require parameters (like color values)
+ *
+ * @example
+ * ```typescript
+ * import { styleNamesFn } from 'debug-color2/lib/styles';
+ * console.log(styleNamesFn);
+ * // ['rgb', 'hsl', 'hsv', 'hwb', 'bgHex', 'bgKeyword', 'bgRgb', 'bgHsl', 'bgHsv', 'bgHwb', 'hex', 'keyword']
+ * ```
  */
 export const styleNamesFn: IStylesFnNames[] = [
 	'rgb',
@@ -72,7 +98,14 @@ export const styleNamesFn: IStylesFnNames[] = [
  *
  * 不需要傳入參數的樣式（如 bold, italic）
  * Styles that don't require parameters (like bold, italic)
+ *
+ * @example
+ * ```typescript
+ * import { styleNamesWithoutFn } from 'debug-color2/lib/styles';
+ * console.log(styleNamesWithoutFn);
+ * // ['bold', 'italic', 'underline', 'inverse', 'hidden', 'visible', 'black', 'red', ...]
+ * ```
  */
 export const styleNamesWithoutFn = styleNames.filter(name => !styleNamesFn.includes(name as any)) as IStylesNamesWithoutFn
 
-export default exports as typeof import('./styles')
+

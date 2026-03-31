@@ -44,12 +44,54 @@ export interface Console2 extends IConsoleWithStream<Console>, IStyles, ICrossCo
 	/** 可呼叫的函式 / Callable function */
 	(...argv): void
 
-	/** 儲存原始 Console 實例的 Symbol / Symbol storing original Console instance */
+	/**
+	 * 儲存原始 Console 實例的 Symbol
+	 * Symbol storing original Console instance
+	 *
+	 * 使用 Symbol.for('console') 建立，確保跨環境一致性
+	 * Uses Symbol.for('console') to ensure cross-environment consistency
+	 *
+	 * @example
+	 * ```typescript
+	 * const logger = new Console2(console, { enabled: true });
+	 * // 取得原始 console 實例
+	 * console.log(logger[SYM_CONSOLE] === console); // true
+	 * ```
+	 */
 	[SYM_CONSOLE]: IConsoleWithStream<Console> | Console2;
-	/** 儲存 Chalk 實例的 Symbol / Symbol storing Chalk instance */
+
+	/**
+	 * 儲存 Chalk 實例的 Symbol
+	 * Symbol storing Chalk instance
+	 *
+	 * 使用 Symbol.for('chalk') 建立，用於儲存色彩樣式處理實例
+	 * Uses Symbol.for('chalk') to store color style handling instance
+	 *
+	 * @example
+	 * ```typescript
+	 * const logger = new Console2();
+	 * // 存取 Chalk 實例
+	 * logger[SYM_CHALK].red('紅色文字');
+	 * logger[SYM_CHALK].bold('粗體文字');
+	 * ```
+	 */
 	[SYM_CHALK]: IChalk;
 
-	/** 儲存選項資料的 Symbol / Symbol storing options data */
+	/**
+	 * 儲存選項資料的 Symbol
+	 * Symbol storing options data
+	 *
+	 * 使用 Symbol.for('data') 建立，儲存所有 IOptions 配置
+	 * Uses Symbol.for('data') to store all IOptions configuration
+	 *
+	 * @example
+	 * ```typescript
+	 * const logger = new Console2(console, { enabled: true, label: true });
+	 * // 存取選項資料
+	 * console.log(logger[SYM_DATA].enabled); // true
+	 * console.log(logger[SYM_DATA].label);   // true
+	 * ```
+	 */
 	[SYM_DATA]: IOptions
 
 	/**
@@ -308,6 +350,18 @@ export class Console2
 	/**
 	 * 取得 Chalk 實例
 	 * Get Chalk instance
+	 *
+	 * 回傳儲存的 Chalk 實例，用於色彩樣式處理
+	 * Returns the stored Chalk instance for color style handling
+	 *
+	 * @example
+	 * ```typescript
+	 * const logger = new Console2();
+	 * // 使用 Chalk 實例進行色彩處理
+	 * logger.chalk.red('紅色');
+	 * logger.chalk.blue('藍色');
+	 * logger.chalk.bold.underline('粗體底線');
+	 * ```
 	 */
 	get chalk()
 	{
@@ -317,6 +371,19 @@ export class Console2
 	/**
 	 * 設定 Chalk 實例
 	 * Set Chalk instance
+	 *
+	 * 用於替換或更新 Chalk 實例
+	 * Used to replace or update the Chalk instance
+	 *
+	 * @param value - 新的 Chalk 實例 / New Chalk instance
+	 *
+	 * @example
+	 * ```typescript
+	 * import chalk from 'chalk';
+	 * const customChalk = chalk.constructor({ level: 2 });
+	 * const logger = new Console2();
+	 * logger.chalk = customChalk;
+	 * ```
 	 */
 	set chalk(value)
 	{
@@ -326,6 +393,18 @@ export class Console2
 	/**
 	 * 取得目前色彩等級
 	 * Get current color level
+	 *
+	 * Chalk 的色彩等級：0 = 關閉, 1 = 基本, 2 = 256色, 3 = 真彩色
+	 * Chalk color level: 0 = off, 1 = basic, 2 = 256 colors, 3 = truecolor
+	 *
+	 * @returns 色彩等級 (0-3) / Color level (0-3)
+	 *
+	 * @example
+	 * ```typescript
+	 * const logger = new Console2();
+	 * console.log(logger.levelColor); // 預設取決於終端機能力
+	 * logger.levelColor = 2;          // 設定為 256 色模式
+	 * ```
 	 */
 	get levelColor(): ILevel
 	{
@@ -335,6 +414,20 @@ export class Console2
 	/**
 	 * 設定色彩等級
 	 * Set color level
+	 *
+	 * 設定 Chalk 的色彩輸出等級
+	 * Sets the Chalk color output level
+	 *
+	 * @param value - 色彩等級 (0-3) / Color level (0-3)
+	 *
+	 * @example
+	 * ```typescript
+	 * const logger = new Console2();
+	 * logger.levelColor = 0; // 關閉色彩
+	 * logger.levelColor = 1; // 基本色彩 (8 種)
+	 * logger.levelColor = 2; // 256 色
+	 * logger.levelColor = 3; // 真彩色 (1677 萬色)
+	 * ```
 	 */
 	set levelColor(value)
 	{
@@ -362,6 +455,17 @@ export class Console2
 	/**
 	 * 取得 Chalk 選項
 	 * Get Chalk options
+	 *
+	 * 回傳 Chalk 的配置選項
+	 * Returns Chalk configuration options
+	 *
+	 * @returns Chalk 選項物件 / Chalk options object
+	 *
+	 * @example
+	 * ```typescript
+	 * const logger = new Console2(console, { chalkOptions: { level: 2 } });
+	 * console.log(logger.chalkOptions); // { level: 2 }
+	 * ```
 	 */
 	get chalkOptions(): IChalkOptions
 	{
@@ -371,6 +475,17 @@ export class Console2
 	/**
 	 * 設定 Chalk 選項
 	 * Set Chalk options
+	 *
+	 * 用於更新 Chalk 的配置選項
+	 * Used to update Chalk configuration options
+	 *
+	 * @param value - Chalk 選項物件 / Chalk options object
+	 *
+	 * @example
+	 * ```typescript
+	 * const logger = new Console2();
+	 * logger.chalkOptions = { level: 2, enabled: true };
+	 * ```
 	 */
 	set chalkOptions(value)
 	{
@@ -380,6 +495,19 @@ export class Console2
 	/**
 	 * 取得檢視選項
 	 * Get inspect options
+	 *
+	 * 回傳 util.inspect 的配置選項
+	 * Returns util.inspect configuration options
+	 *
+	 * @returns 檢視選項物件 / Inspect options object
+	 *
+	 * @example
+	 * ```typescript
+	 * const logger = new Console2(console, {
+	 *     inspectOptions: { colors: true, depth: 4 }
+	 * });
+	 * console.log(logger.inspectOptions); // { colors: true, depth: 4 }
+	 * ```
 	 */
 	get inspectOptions()
 	{
@@ -389,6 +517,17 @@ export class Console2
 	/**
 	 * 設定檢視選項
 	 * Set inspect options
+	 *
+	 * 用於更新 util.inspect 的配置選項
+	 * Used to update util.inspect configuration options
+	 *
+	 * @param value - 檢視選項物件 / Inspect options object
+	 *
+	 * @example
+	 * ```typescript
+	 * const logger = new Console2();
+	 * logger.inspectOptions = { colors: true, depth: null };
+	 * ```
 	 */
 	set inspectOptions(value)
 	{
@@ -409,6 +548,17 @@ export class Console2
 	/**
 	 * 取得 debug 啟用狀態
 	 * Get debug enabled status
+	 *
+	 * 控制是否輸出日誌訊息
+	 * Controls whether to output log messages
+	 *
+	 * @returns 是否啟用 / Whether enabled
+	 *
+	 * @example
+	 * ```typescript
+	 * const logger = new Console2(console, { enabled: true });
+	 * console.log(logger.enabled); // true
+	 * ```
 	 */
 	get enabled()
 	{
@@ -419,7 +569,19 @@ export class Console2
 	 * 設定 debug 啟用狀態
 	 * Set debug enabled status
 	 *
+	 * 設定是否輸出日誌訊息
+	 * Sets whether to output log messages
+	 *
 	 * @param value - 啟用狀態 / Enabled status
+	 *
+	 * @example
+	 * ```typescript
+	 * const logger = new Console2(console);
+	 * logger.enabled = false;  // 停用日誌輸出
+	 * logger.log('這不會輸出'); // 無輸出
+	 * logger.enabled = true;  // 啟用日誌輸出
+	 * logger.log('這會輸出');  // 正常輸出
+	 * ```
 	 */
 	set enabled(value)
 	{
@@ -430,8 +592,18 @@ export class Console2
 	 * 設定選項
 	 * Set options
 	 *
+	 * 合併新選項到現有配置中
+	 * Merge new options into existing configuration
+	 *
 	 * @param options - 選項物件 / Options object
 	 * @returns this 實例 / this instance
+	 *
+	 * @example
+	 * ```typescript
+	 * const logger = new Console2(console, { enabled: true });
+	 * logger.setOptions({ label: true, time: true });
+	 * // 現在 logger 會顯示標籤和時間
+	 * ```
 	 */
 	setOptions(options: IOptions)
 	{
@@ -444,8 +616,25 @@ export class Console2
 	 * 建立具有新選項的複製品
 	 * Create a copy with new options
 	 *
+	 * 建立新的 Console2 實例，複製現有配置並合併新選項
+	 * Creates a new Console2 instance, copies existing config and merges new options
+	 *
 	 * @param options - 新選項物件 / New options object
 	 * @returns 新的 Console2 實例 / New Console2 instance
+	 *
+	 * @example
+	 * ```typescript
+	 * const logger = new Console2(console, { enabled: true });
+	 * const childLogger = logger.withOptions({ label: true, time: true });
+	 *
+	 * // parent 保持不變
+	 * console.log(logger.enabled);   // true
+	 * console.log(logger.label);     // undefined
+	 *
+	 * // child 有新的選項
+	 * console.log(childLogger.enabled); // true (繼承)
+	 * console.log(childLogger.label);  // true (新設定)
+	 * ```
 	 */
 	withOptions(options: IOptions)
 	{
@@ -462,7 +651,18 @@ export class Console2
 	 * 建立 Console2 的淺層複製品
 	 * Create a shallow copy of Console2
 	 *
+	 * 內部方法，用於建立具有相同配置的新實例
+	 * Internal method for creating new instance with same configuration
+	 *
 	 * @returns 新的 Console2 實例 / New Console2 instance
+	 *
+	 * @example
+	 * ```typescript
+	 * const logger = new Console2(console, { enabled: true });
+	 * const clone = logger._clone();
+	 * // clone 是一個新的可呼叫 Console2 實例
+	 * clone('hello'); // 輸出訊息
+	 * ```
 	 */
 	protected _clone(): this
 	{

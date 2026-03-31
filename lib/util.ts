@@ -45,8 +45,25 @@ export function isSupportsColor()
  * 建立一個回調函數，可存取 Console 的 Chalk 實例
  * Create a callback function that can access Console's Chalk instance
  *
+ * 此函數返回一个高階函數，用於在回調中存取 Console2 實例的 Chalk 實例
+ * This function returns a higher-order function to access the Chalk instance of Console2 in a callback
+ *
  * @param console - Console2 實例 / Console2 instance
  * @returns 回調函數 / Callback function
+ *
+ * @example
+ * ```typescript
+ * import { createFnChalkByConsole } from 'debug-color2/lib/util';
+ * import { Console2 } from 'debug-color2/lib/node';
+ *
+ * const console2 = new Console2();
+ * const chalkFn = createFnChalkByConsole(console2);
+ *
+ * // 在回調中存取 chalk 和 console2
+ * const result = chalkFn((chalk, _console) => {
+ *     return chalk.red('Hello World');
+ * });
+ * ```
  */
 export function createFnChalkByConsole<CI extends Console2>(console: CI)
 {
@@ -62,8 +79,24 @@ export function createFnChalkByConsole<CI extends Console2>(console: CI)
  * 取得 Chalk 實例，若無 Console2 實例則回退到預設 chalk
  * Get Chalk instance, fallback to default chalk if no Console2 instance
  *
+ * 此函數提供了一個安全取得 Chalk 實例的方式，若傳入的 Console2 實例不存在 Chalk，則使用預設的 chalk
+ * This function provides a safe way to get a Chalk instance, using default chalk if the passed Console2 doesn't have one
+ *
  * @param console - Console2 實例（可選）/ Console2 instance (optional)
  * @returns Chalk 實例 / Chalk instance
+ *
+ * @example
+ * ```typescript
+ * import { chalkByConsoleMaybe } from 'debug-color2/lib/util';
+ * import { Console2 } from 'debug-color2/lib/node';
+ *
+ * // 有 Console2 實例的情況
+ * const console2 = new Console2();
+ * const chalk1 = chalkByConsoleMaybe(console2); // 使用 console2.chalk
+ *
+ * // 沒有 Console2 實例的情況
+ * const chalk2 = chalkByConsoleMaybe(); // 使用預設的 chalk
+ * ```
  */
 export function chalkByConsoleMaybe<CI extends Console2>(console?: CI): IChalk
 {
@@ -129,4 +162,4 @@ export function arrayIncludes<T>(arr: ITSArrayListMaybeReadonly<T>, value: any):
 	return arr.includes(value as any)
 }
 
-export default exports as typeof import('./util');
+

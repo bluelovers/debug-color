@@ -20,35 +20,91 @@ export * from './types';
 /**
  * Debug Console Symbol
  * 用於儲存 Debug Console 實例 / Used to store Debug Console instance
+ *
+ * @example
+ * ```typescript
+ * // 使用 Symbol.for 確保跨環境一致性
+ * const sym = Symbol.for('DebugConsole');
+ * console.log(sym === SYM_DEBUG_CONSOLE); // true
+ * ```
  */
 export const SYM_DEBUG_CONSOLE = Symbol.for('DebugConsole');
+
 /**
  * Chalk Symbol
  * 用於儲存 Chalk 實例 / Used to store Chalk instance
+ *
+ * 使用 Symbol.for('chalk') 建立，確保與 Chalk 庫的 Symbol 相容
+ * Uses Symbol.for('chalk') to ensure compatibility with Chalk library
+ *
+ * @example
+ * ```typescript
+ * // 存取 Chalk 實例
+ * const logger = new Console2();
+ * const chalk = logger[SYM_CHALK];
+ * chalk.red('紅色文字');
+ * ```
  */
 export const SYM_CHALK = Symbol.for('chalk');
 
 /**
  * Console Symbol
  * 用於儲存 Console 實例 / Used to store Console instance
+ *
+ * 使用 Symbol.for('console') 建立，儲存原始的 console 實例
+ * Uses Symbol.for('console') to store the original console instance
+ *
+ * @example
+ * ```typescript
+ * // 取得原始 console
+ * const logger = new Console2(console);
+ * const originalConsole = logger[SYM_CONSOLE];
+ * console.log(originalConsole === console); // true
+ * ```
  */
 export const SYM_CONSOLE = Symbol.for('console');
 
 /**
  * Event Symbol
  * 用於儲存事件資料 / Used to store event data
+ *
+ * @example
+ * ```typescript
+ * // 用於內部事件處理
+ * const logger = new Console2();
+ * logger[SYM_EVENT] = { type: 'log', timestamp: Date.now() };
+ * ```
  */
 export const SYM_EVENT = Symbol.for('event');
 
 /**
  * Data Symbol
  * 用於儲存選項資料 / Used to store options data
+ *
+ * 使用 Symbol.for('data') 建立，儲存 IOptions 配置資料
+ * Uses Symbol.for('data') to store IOptions configuration data
+ *
+ * @example
+ * ```typescript
+ * // 存取選項資料
+ * const logger = new Console2(console, { enabled: true, label: true });
+ * const options = logger[SYM_DATA];
+ * console.log(options.enabled); // true
+ * console.log(options.label);  // true
+ * ```
  */
 export const SYM_DATA = Symbol.for('data');
 
 /**
  * This Symbol
  * 用於儲存 this 參考 / Used to store this reference
+ *
+ * @example
+ * ```typescript
+ * // 用於綁定方法的 this 上下文
+ * const logger = new Console2();
+ * logger[SYM_THIS] = logger;
+ * ```
  */
 export const SYM_THIS = Symbol.for('console.this');
 
@@ -73,4 +129,4 @@ export const defaultColors: Partial<IOptions["colors"]> = {
 	ok: 'green',
 };
 
-export default exports as typeof import('./val');
+
