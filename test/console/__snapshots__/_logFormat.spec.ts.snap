@@ -1,0 +1,316 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Console Internal - _logFormat _logFormat documented snapshots should document complete behavior 1`] = `
+[
+  {
+    "#id": "format-001",
+    "explain": "✅ 空參數 / Empty arguments",
+    "input": {
+      "argv": [],
+    },
+    "result": "",
+    "tags": "basic, empty",
+  },
+  {
+    "#id": "format-002",
+    "explain": "✅ 單一參數 / Single argument",
+    "input": {
+      "argv": [
+        "message",
+      ],
+    },
+    "result": "message",
+    "tags": "basic, single",
+  },
+  {
+    "#id": "format-003",
+    "explain": "✅ 多個字串 / Multiple strings",
+    "input": {
+      "argv": [
+        "a",
+        "b",
+        "c",
+      ],
+    },
+    "result": "a b c",
+    "tags": "basic, strings",
+  },
+  {
+    "#id": "format-004",
+    "explain": "✅ 混合類型 / Mixed types",
+    "input": {
+      "argv": [
+        "count:",
+        123,
+        "status:",
+        "active",
+      ],
+    },
+    "result": "count: 123 status: active",
+    "tags": "mixed, string-number",
+  },
+  {
+    "#id": "format-005",
+    "explain": "✅ 陣列參數 / Array argument",
+    "input": {
+      "argv": [
+        [
+          1,
+          2,
+          3,
+        ],
+      ],
+    },
+    "result": "[ 1, 2, 3 ]",
+    "tags": "array",
+  },
+  {
+    "#id": "format-006",
+    "explain": "✅ 函式參數 / Function argument",
+    "input": {
+      "argv": [
+        [Function],
+      ],
+    },
+    "result": "[Function: testFn]",
+    "tags": "function",
+  },
+]
+`;
+
+exports[`Console Internal - _logFormat _logFormat with format specifiers should match snapshot for format specifiers 1`] = `
+[
+  {
+    "explain": "✅ %s 標記 / %s specifier",
+    "input": {
+      "argv": [
+        "Hello %s",
+        "World",
+      ],
+    },
+    "result": "Hello World",
+  },
+  {
+    "explain": "✅ %d 標記 / %d specifier",
+    "input": {
+      "argv": [
+        "Count: %d",
+        100,
+      ],
+    },
+    "result": "Count: 100",
+  },
+  {
+    "explain": "✅ %j 標記 / %j specifier",
+    "input": {
+      "argv": [
+        "%j",
+        {
+          "key": "value",
+        },
+      ],
+    },
+    "result": "{"key":"value"}",
+  },
+  {
+    "explain": "✅ 多個標記 / Multiple specifiers",
+    "input": {
+      "argv": [
+        "%s: %d",
+        "Answer",
+        42,
+      ],
+    },
+    "result": "Answer: 42",
+  },
+]
+`;
+
+exports[`Console Internal - _logFormat _logFormat with number arguments should match snapshot for number arguments 1`] = `
+[
+  {
+    "explain": "✅ 數字參數格式化 / Number arguments formatting",
+    "input": {
+      "argv": [
+        0,
+      ],
+    },
+    "result": "0",
+  },
+  {
+    "explain": "✅ 數字參數格式化 / Number arguments formatting",
+    "input": {
+      "argv": [
+        100,
+      ],
+    },
+    "result": "100",
+  },
+  {
+    "explain": "✅ 數字參數格式化 / Number arguments formatting",
+    "input": {
+      "argv": [
+        -5,
+      ],
+    },
+    "result": "-5",
+  },
+  {
+    "explain": "✅ 數字參數格式化 / Number arguments formatting",
+    "input": {
+      "argv": [
+        1.5,
+      ],
+    },
+    "result": "1.5",
+  },
+]
+`;
+
+exports[`Console Internal - _logFormat _logFormat with object arguments should format mixed object and string 1`] = `"message: { foo: 'bar' }"`;
+
+exports[`Console Internal - _logFormat _logFormat with object arguments should match snapshot for object arguments 1`] = `
+[
+  {
+    "explain": "✅ 簡單物件 / Simple object",
+    "input": {
+      "argv": [
+        {
+          "name": "test",
+        },
+      ],
+    },
+    "result": "{ name: 'test' }",
+  },
+  {
+    "explain": "✅ 巢狀物件 / Nested object",
+    "input": {
+      "argv": [
+        {
+          "user": {
+            "age": 30,
+            "name": "Alice",
+          },
+        },
+      ],
+    },
+    "result": "{ user: { name: 'Alice', age: 30 } }",
+  },
+  {
+    "explain": "✅ 混合參數 / Mixed arguments",
+    "input": {
+      "argv": [
+        "User:",
+        {
+          "active": true,
+          "name": "Bob",
+        },
+      ],
+    },
+    "result": "User: { name: 'Bob', active: true }",
+  },
+]
+`;
+
+exports[`Console Internal - _logFormat _logFormat with special values should match snapshot for special values 1`] = `
+[
+  {
+    "explain": "✅ undefined",
+    "input": {
+      "argv": [
+        undefined,
+      ],
+    },
+    "result": "undefined",
+  },
+  {
+    "explain": "✅ null",
+    "input": {
+      "argv": [
+        null,
+      ],
+    },
+    "result": "null",
+  },
+  {
+    "explain": "✅ NaN",
+    "input": {
+      "argv": [
+        NaN,
+      ],
+    },
+    "result": "NaN",
+  },
+  {
+    "explain": "✅ Infinity",
+    "input": {
+      "argv": [
+        Infinity,
+      ],
+    },
+    "result": "Infinity",
+  },
+  {
+    "explain": "✅ -Infinity",
+    "input": {
+      "argv": [
+        -Infinity,
+      ],
+    },
+    "result": "-Infinity",
+  },
+  {
+    "explain": "✅ true",
+    "input": {
+      "argv": [
+        true,
+      ],
+    },
+    "result": "true",
+  },
+  {
+    "explain": "✅ false",
+    "input": {
+      "argv": [
+        false,
+      ],
+    },
+    "result": "false",
+  },
+]
+`;
+
+exports[`Console Internal - _logFormat _logFormat with string arguments should match snapshot for string arguments 1`] = `
+[
+  {
+    "explain": "✅ 字串參數格式化 / String arguments formatting",
+    "input": {
+      "argv": [
+        "single",
+      ],
+    },
+    "result": "single",
+  },
+  {
+    "explain": "✅ 字串參數格式化 / String arguments formatting",
+    "input": {
+      "argv": [
+        "hello",
+        "world",
+      ],
+    },
+    "result": "hello world",
+  },
+  {
+    "explain": "✅ 字串參數格式化 / String arguments formatting",
+    "input": {
+      "argv": [
+        "a",
+        "b",
+        "c",
+      ],
+    },
+    "result": "a b c",
+  },
+]
+`;

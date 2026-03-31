@@ -49,7 +49,7 @@
   "scripts": {
     "coverage": "yarn run test -- --coverage",
     "pretest": "echo pretest",
-    "test": "yarn run test:demo && yarn run test:jest",
+    "test": "yarn run test:demo && yarn run test:jest:snapshot",
     "test:demo": "ts-node ./test/demo.ts",
     "test:jest": "jest",
     "test:jest:clearCache": "jest --clearCache",

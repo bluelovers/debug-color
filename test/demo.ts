@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import { Console2 } from '..';
 import debug from 'debug';
 
-let c1 = new Console2();
+let c1 = new Console2(null);
 
 c1.blue('blue');
 c1.blue.log('blue.log');

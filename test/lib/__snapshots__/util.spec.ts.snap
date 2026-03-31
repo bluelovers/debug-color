@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Util Module arrayIncludes should match snapshot 1`] = `true`;
+
+exports[`Util Module arrayIncludes should match snapshot 2`] = `false`;
+
+exports[`Util Module chalkByConsoleMaybe should match snapshot for default chalk behavior 1`] = `[Function]`;
+
+exports[`Util Module createFnChalkByConsole should match snapshot 1`] = `"[31merror[39m[32msuccess[39m"`;
+
+exports[`Util Module hasConsoleStream should match snapshot for stream detection 1`] = `
+{
+  "hasStderr": true,
+  "hasStdout": true,
+  "hasStream": true,
+}
+`;

@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`describe color._logArgv 1`] = `
-Object {
-  "arr": Array [
+{
+  "arr": [
     "[0m[35m{ data: { a: 777 } }[39m[0m",
   ],
   "name": "log",
@@ -10,8 +10,8 @@ Object {
 `;
 
 exports[`describe console._logArgv 1`] = `
-Object {
-  "arr": Array [
+{
+  "arr": [
     "[0m{ data: { a: 777 } }[0m",
   ],
   "name": "log",
@@ -19,8 +19,8 @@ Object {
 `;
 
 exports[`describe console._logArgv 2`] = `
-Object {
-  "arr": Array [
+{
+  "arr": [
     "[0m[35m{ data: { a: 777 } }[39m[0m",
   ],
   "name": "log",

@@ -1,0 +1,305 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Console Internal - _logArgv _logArgv basic formatting should format basic string arguments 1`] = `
+{
+  "arr": [
+    "[0mhello world[0m",
+  ],
+  "name": "log",
+}
+`;
+
+exports[`Console Internal - _logArgv _logArgv basic formatting should join multiple arguments 1`] = `
+{
+  "arr": [
+    "[0mhello world ![0m",
+  ],
+  "name": "log",
+}
+`;
+
+exports[`Console Internal - _logArgv _logArgv documented snapshots should document various configurations 1`] = `
+[
+  {
+    "#id": "logArgv-001",
+    "explain": "✅ 基本日誌 / Basic log",
+    "input": {
+      "argv": [
+        "hello",
+      ],
+      "name": "log",
+    },
+    "result": {
+      "arr": [
+        "[0mhello[0m",
+      ],
+      "arrCount": 1,
+      "name": "log",
+    },
+    "tags": "basic, log",
+  },
+  {
+    "#id": "logArgv-002",
+    "explain": "✅ 錯誤日誌 / Error log",
+    "input": {
+      "argv": [
+        "error occurred",
+      ],
+      "name": "error",
+    },
+    "result": {
+      "arr": [
+        "[0m[31merror occurred[39m[0m",
+      ],
+      "arrCount": 1,
+      "name": "error",
+    },
+    "tags": "error",
+  },
+  {
+    "#id": "logArgv-003",
+    "explain": "✅ 啟用時間 / Time enabled",
+    "input": {
+      "argv": [
+        "test",
+      ],
+      "name": "log",
+    },
+    "result": {
+      "arr": [
+        "[0m[03:39:39.576][0m",
+        "[0mtest[0m",
+      ],
+      "arrCount": 2,
+      "name": "log",
+    },
+    "tags": "time, timestamp",
+  },
+  {
+    "#id": "logArgv-004",
+    "explain": "✅ 啟用標籤 / Label enabled",
+    "input": {
+      "argv": [
+        "test",
+      ],
+      "name": "log",
+    },
+    "result": {
+      "arr": [
+        "[0m[LOG][0m",
+        "[0mtest[0m",
+      ],
+      "arrCount": 2,
+      "name": "log",
+    },
+    "tags": "label, tag",
+  },
+  {
+    "#id": "logArgv-005",
+    "explain": "✅ 自訂顏色 / Custom colors",
+    "input": {
+      "argv": [
+        "test",
+      ],
+      "name": "log",
+    },
+    "result": {
+      "arr": [
+        "[0m[32mtest[39m[0m",
+      ],
+      "arrCount": 1,
+      "name": "log",
+    },
+    "tags": "colors, custom",
+  },
+  {
+    "#id": "logArgv-006",
+    "explain": "✅ 多個參數 / Multiple arguments",
+    "input": {
+      "argv": [
+        "a",
+        "b",
+        "c",
+        123,
+      ],
+      "name": "log",
+    },
+    "result": {
+      "arr": [
+        "[0ma b c 123[0m",
+      ],
+      "arrCount": 1,
+      "name": "log",
+    },
+    "tags": "multiple, args",
+  },
+]
+`;
+
+exports[`Console Internal - _logArgv _logArgv with custom colors should apply custom colors 1`] = `
+{
+  "arr": [
+    "[0m[32mtest[39m[0m",
+  ],
+  "name": "log",
+}
+`;
+
+exports[`Console Internal - _logArgv _logArgv with custom colors should convert string color to Chalk function 1`] = `
+{
+  "arr": [
+    "[0m[36mtest[39m[0m",
+  ],
+  "name": "log",
+}
+`;
+
+exports[`Console Internal - _logArgv _logArgv with different log types should handle different log types 1`] = `
+[
+  {
+    "result": {
+      "arr": [
+        "[0mtest[0m",
+      ],
+      "name": "log",
+    },
+    "type": "log",
+  },
+  {
+    "result": {
+      "arr": [
+        "[0m[36mtest[39m[0m",
+      ],
+      "name": "info",
+    },
+    "type": "info",
+  },
+  {
+    "result": {
+      "arr": [
+        "[0m[36mtest[39m[0m",
+      ],
+      "name": "debug",
+    },
+    "type": "debug",
+  },
+  {
+    "result": {
+      "arr": [
+        "[0m[31mtest[39m[0m",
+      ],
+      "name": "warn",
+    },
+    "type": "warn",
+  },
+  {
+    "result": {
+      "arr": [
+        "[0m[31mtest[39m[0m",
+      ],
+      "name": "error",
+    },
+    "type": "error",
+  },
+]
+`;
+
+exports[`Console Internal - _logArgv _logArgv with label enabled should include label when label is enabled 1`] = `
+{
+  "arr": [
+    "[0m[LOG][0m",
+    "[0mtest[0m",
+  ],
+  "name": "log",
+}
+`;
+
+exports[`Console Internal - _logArgv _logArgv with time enabled should apply custom time format 1`] = `
+{
+  "arr": [
+    "[0m[03:39][0m",
+    "[0mtest[0m",
+  ],
+  "name": "log",
+}
+`;
+
+exports[`Console Internal - _logArgv _logArgv with time enabled should include timestamp when time is enabled 1`] = `
+{
+  "arr": [
+    "[0m[03:39:39.570][0m",
+    "[0mtest message[0m",
+  ],
+  "name": "log",
+}
+`;
+
+exports[`Console Internal - _logErrorArgv _logErrorArgv basic behavior should match snapshot for error log 1`] = `
+{
+  "arr": [
+    "[0m[31merror occurred[39m[0m",
+  ],
+  "name": "error",
+}
+`;
+
+exports[`Console Internal - _logErrorArgv _logErrorArgv documented snapshots should document error handling behavior 1`] = `
+[
+  {
+    "#id": "errorArgv-001",
+    "explain": "✅ 基本錯誤 / Basic error",
+    "input": {
+      "argv": [
+        "error occurred",
+      ],
+      "failBack": "error",
+      "name": "error",
+    },
+    "result": {
+      "arr": [
+        "[0m[31merror occurred[39m[0m",
+      ],
+      "name": "error",
+    },
+    "tags": "error, basic",
+  },
+  {
+    "#id": "errorArgv-002",
+    "explain": "✅ 警告回退 / Warn fallback",
+    "input": {
+      "argv": [
+        "test",
+      ],
+      "failBack": "warn",
+      "name": "fail",
+    },
+    "result": {
+      "arr": [
+        "[0m[31mtest[39m[0m",
+      ],
+      "name": "warn",
+    },
+    "tags": "error, fallback",
+  },
+  {
+    "#id": "errorArgv-003",
+    "explain": "✅ 多個參數 / Multiple arguments",
+    "input": {
+      "argv": [
+        "Error:",
+        "code:",
+        500,
+      ],
+      "failBack": "error",
+      "name": "error",
+    },
+    "result": {
+      "arr": [
+        "[0m[31mError: code: 500[39m[0m",
+      ],
+      "name": "error",
+    },
+    "tags": "error, multiple",
+  },
+]
+`;

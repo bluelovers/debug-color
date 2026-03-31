@@ -6,7 +6,7 @@ describe(`describe`, () =>
 	test(`console2.enabled = void 0`, () =>
 	{
 
-		let console2 = new Console2();
+		let console2 = new Console2(null);
 
 		expect(console2.enabled).toStrictEqual(true);
 
