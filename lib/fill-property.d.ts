@@ -1,13 +1,76 @@
 /**
- * Created by user on 2018/6/29/029.
+ * 屬性填充模組
+ * Property filling module
+ *
+ * 定義 Console 方法列表和屬性填充函式
+ * Define Console method lists and property filling function
+ *
+ * @module debug-color2/lib/fill-property
+ * @created 2018/6/29/029
  */
 import { IFillProperty, IValueOfArray } from './types';
 import { IMethods } from './types/CrossConsole';
+/**
+ * stdout 方法列表
+ * stdout methods list
+ *
+ * 輸出到標準輸出串流的方法
+ * Methods that output to stdout stream
+ */
 export declare const methods_stdout: readonly ["debug", "info", "log"];
+/**
+ * 輸出方法列表
+ * Output methods list
+ *
+ * 格式化輸出方法（如 table, dir）
+ * Formatted output methods (like table, dir)
+ */
 export declare const methods_output: readonly ["table", "dir", "dirxml"];
+/**
+ * 其他方法列表
+ * Other methods list
+ *
+ * 輔助功能方法（如 group, time）
+ * Auxiliary function methods (like group, time)
+ */
 export declare const methods_other: readonly ["clear", "group", "groupCollapsed", "groupEnd", "time", "timeEnd", "count"];
+/**
+ * 檢視器專用方法列表
+ * Inspector-only methods list
+ *
+ * 僅在檢視器中可用的方法
+ * Methods only available in inspector
+ */
 export declare const methods_inspector: readonly ["profile", "profileEnd", "timeStamp", "markTimeline", "timeline", "timelineEnd"];
+/**
+ * stderr 方法列表
+ * stderr methods list
+ *
+ * 輸出到標準錯誤串流的方法
+ * Methods that output to stderr stream
+ */
 export declare const methods_stderr: readonly ["assert", "error", "trace", "warn", "exception"];
-export declare const methods: ("assert" | "clear" | "count" | "debug" | "dir" | "dirxml" | "error" | "group" | "groupCollapsed" | "groupEnd" | "info" | "log" | "table" | "time" | "timeEnd" | "trace" | "warn" | "profile" | "profileEnd" | "timeStamp" | "exception" | "markTimeline" | "timeline" | "timelineEnd")[];
+/**
+ * 取得物件值的類型
+ * Get type of object values
+ */
+type ValueOf<T> = Exclude<T[keyof T], number | Function>;
+/**
+ * 所有 Console 方法的合併列表
+ * Combined list of all Console methods
+ */
+export declare const methods: (ValueOf<typeof methods_stdout> | ValueOf<typeof methods_stderr> | ValueOf<typeof methods_inspector> | ValueOf<typeof methods_other> | ValueOf<typeof methods_output>)[];
+/**
+ * 填充目標物件的 Console 方法
+ * Fill Console methods to target object
+ *
+ * 為目標物件填入缺失的 Console 方法
+ * Fill missing Console methods to target object
+ *
+ * @param target - 目標物件，預設為 console / Target object, defaults to console
+ * @param ls - 方法名稱列表 / List of method names
+ * @param fn - 預設函式 / Default function
+ * @returns 填充後的目標物件 / Filled target object
+ */
 export declare function fillProperty<T extends object = Console, P extends string[] = IMethods[], U extends (...argv: any) => any = (...argv: any) => void>(target?: T, ls?: P, fn?: U): T & IFillProperty<T, IValueOfArray<P>, U>;
 export default fillProperty;

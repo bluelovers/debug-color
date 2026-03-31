@@ -220,3 +220,13 @@ dist/*.umd.*.*s
 /__root_ws.js
 
 !/.yarnrc.yml
+.github/commit-convention.md
+.github/dependabot.yml
+.github/workflows/action-yarnlock-dedupe.yml
+.github/workflows/build.yml
+.github/workflows/cmd-rebase.yml
+.github/workflows/codeql-analysis.yml
+.github/workflows/coverage.yml
+.github/workflows/yarn-lock-changes.yml
+.editorconfig
+.eslintrc.json

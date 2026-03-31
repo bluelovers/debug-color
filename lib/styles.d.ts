@@ -1,11 +1,50 @@
 /**
- * Created by user on 2018/6/26/026.
+ * 樣式模組
+ * Styles module
+ *
+ * 定義 Chalk 樣式名稱和相關類型
+ * Define Chalk style names and related types
+ *
+ * @module debug-color2/lib/styles
+ * @created 2018/6/26/026
  */
 import { IStyles, IStylesFnNames, IStylesNamesWithoutFn } from './types';
+/**
+ * 匯出所有類型定義
+ * Export all type definitions
+ */
 export * from './types';
+/**
+ * 從 Chalk 實例取得樣式名稱列表
+ * Get style names from Chalk instance
+ *
+ * @param chalk - Chalk 實例 / Chalk instance
+ * @returns 樣式名稱陣列 / Array of style names
+ */
 export declare function getStyleNamesByChalk(chalk: any): (keyof IStyles)[];
+/**
+ * 所有樣式名稱
+ * All style names
+ *
+ * 從 Chalk Prototype 取得的樣式名稱列表
+ * List of style names obtained from Chalk Prototype
+ */
 export declare const styleNames: (keyof IStyles)[];
+/**
+ * 函式型樣式名稱
+ * Function-type style names
+ *
+ * 需要傳入參數的樣式（如顏色值）
+ * Styles that require parameters (like color values)
+ */
 export declare const styleNamesFn: IStylesFnNames[];
+/**
+ * 非函式型樣式名稱
+ * Non-function-type style names
+ *
+ * 不需要傳入參數的樣式（如 bold, italic）
+ * Styles that don't require parameters (like bold, italic)
+ */
 export declare const styleNamesWithoutFn: IStylesNamesWithoutFn;
 declare const _default: typeof import("./styles");
 export default _default;
