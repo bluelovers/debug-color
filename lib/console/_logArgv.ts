@@ -6,11 +6,34 @@ import { _logFormat } from './_logFormat';
 import { _labelFormat } from './_labelFormat';
 import { processPlatform } from '../util/processPlatform';
 
+/**
+ * 格式化錯誤參數
+ * Format error arguments
+ *
+ * @param this - Console2 實例 / Console2 instance
+ * @param argv - 參數陣列 / Arguments array
+ * @param name - 方法名稱 / Method name
+ * @param failBack - 備用方法名稱 / Fallback method name
+ * @returns 處理後的參數 / Processed arguments
+ */
 export function _logErrorArgv(this: Console2,argv: any[], name: string = 'error', failBack = 'error')
 {
 	return (this._logArgv ?? _logArgv).call(this, argv, name, failBack)
 }
 
+/**
+ * 格式化日誌參數
+ * Format log arguments
+ *
+ * 處理時間戳、標籤、色彩等格式化
+ * Handle timestamp, label, color and other formatting
+ *
+ * @param this - Console2 實例 / Console2 instance
+ * @param argv - 參數陣列 / Arguments array
+ * @param name - 方法名稱 / Method name
+ * @param failBack - 備用方法名稱 / Fallback method name
+ * @returns 處理後的參數物件 / Processed arguments object
+ */
 export function _logArgv(this: Console2, argv: any[], name: string = 'log', failBack = 'log')
 {
 	let s = (this._logFormat ?? _logFormat).call(this, ...argv);
