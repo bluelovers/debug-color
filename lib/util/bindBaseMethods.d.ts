@@ -18,6 +18,28 @@
  * @param target - 目標函式 / Target function
  * @param me - Console2 實例 / Console2 instance
  * @returns 設定後的函式 / Configured function
+ *
+ * @example
+ * // setBindThis 使用 Object.defineProperty 設定 SYM_THIS 屬性
+ * // setBindThis uses Object.defineProperty to set SYM_THIS property
+ *
+ * // 這是一個 getter 函式，每次存取都會返回綁定的 Console2 實例
+ * // This is a getter function, every access returns the bound Console2 instance
+ *
+ * // 在 _get 中，包裝函式會檢查 fn[SYM_THIS] 來取得正確的 this
+ * // In _get, the wrapper function checks fn[SYM_THIS] to get correct this
+ *
+ * @example
+ * // 內部實現原理：
+ * // Internal implementation principle:
+ *
+ * Object.defineProperty(fn, SYM_THIS, {
+ *   get() { return me },  // 存取時返回綁定的實例
+ *   enumerable: false,   // 屬性不可列舉，避免被 for...in 遍歷
+ * });
+ *
+ * // 這樣即使函式被當作回調函式傳遞，this 仍然是正確的
+ * // This way even if the function is passed as callback, this is still correct
  */
 export declare function setBindThis(target: any, me: any): any;
 /**
@@ -29,5 +51,35 @@ export declare function setBindThis(target: any, me: any): any;
  *
  * @param target - 目標 Console2 實例 / Target Console2 instance
  * @returns 綁定後的目標物件 / Bound target object
+ *
+ * @example
+ * // bindBaseMethods 會為 Console2 的所有方法建立 this 綁定
+ * // bindBaseMethods creates this binding for all Console2 methods
+ *
+ * // 這保證了即使將方法當作回調傳遞，this 仍然正確
+ * // This ensures that even when passing methods as callbacks, this is still correct
+ *
+ * // 使用場景：
+ * // Usage scenarios:
+ * // 1. 將 console2.log 傳遞給其他函式
+ * // 1. Passing console2.log to other functions
+ * setTimeout(console2.log, 1000, 'delayed message');
+ * // 沒有綁定的話，this 會是 timeout，輸出會失敗
+ * // Without binding, this would be timeout and output would fail
+ *
+ * // 2. 作為事件處理器
+ * // 2. As event handler
+ * element.addEventListener('click', console2.log);
+ * // 沒有綁定的話，this 會是 element
+ * // Without binding, this would be element
+ *
+ * @example
+ * // 自動調用流程：
+ * // Automatic call flow:
+ * // Console2 構造函式會自動調用 bindBaseMethods(this)
+ * // Console2 constructor automatically calls bindBaseMethods(this)
+ *
+ * // 這確保了每個 Console2 實例的所有方法都有正確的 this 綁定
+ * // This ensures every Console2 instance's methods have correct this binding
  */
 export declare function bindBaseMethods(target: any): any;

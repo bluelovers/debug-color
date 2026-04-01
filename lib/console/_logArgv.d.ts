@@ -11,6 +11,16 @@ import Console2 from '../node';
  * @param name - 方法名稱 / Method name
  * @param failBack - 備用方法名稱 / Fallback method name
  * @returns 處理後的參數 / Processed arguments
+ *
+ * @example
+ * // _logErrorArgv 是錯誤專用的包裝函式
+ * // _logErrorArgv is error-specific wrapper function
+ *
+ * // 實際上只是呼叫 _logArgv，但參數預設為 error
+ * // Actually just calls _logArgv, but with default parameter 'error'
+ * const result = _logErrorArgv.call(console2, [errorObj, message], 'error', 'error');
+ * // 等同於 / Equivalent to:
+ * const result = _logArgv.call(console2, [errorObj, message], 'error', 'error');
  */
 export declare function _logErrorArgv(this: Console2, argv: any[], name?: string, failBack?: string): {
     name: string;
@@ -44,6 +54,36 @@ export declare function _logErrorArgv(this: Console2, argv: any[], name?: string
  * @param name - 方法名稱 / Method name
  * @param failBack - 備用方法名稱 / Fallback method name
  * @returns 處理後的參數物件 / Processed arguments object
+ *
+ * @example
+ * // 輸入：console2.log('Hello', { name: 'World' })
+ * // Input: console2.log('Hello', { name: 'World' })
+ *
+ * // 處理流程：
+ * // Processing flow:
+ * // 1. util.format('Hello', { name: 'World' }) → 'Hello { name: \'World\' }'
+ * // 2. Apply chalk styles → colored text
+ * // 3. Add timestamp if data.time enabled → [14:30:25.123]
+ * // 4. Add label if data.label enabled → [MY_APP]
+ * // 5. Apply custom colors if data.colors[log] exists
+ * // 6. Windows fix if needed
+ *
+ * // 輸出：{ name: 'log', arr: ['[14:30:25.123]', '[MY_APP]', 'Hello {...}'] }
+ * // Output: { name: 'log', arr: ['[14:30:25.123]', '[MY_APP]', 'Hello {...}'] }
+ *
+ * @example
+ * // 自定義顏色範例：
+ * // Custom colors example:
+ * const console2 = new Console2({
+ *   colors: {
+ *     log: 'blue',
+ *     error: 'red',
+ *     warn: 'yellow',
+ *   }
+ * });
+ *
+ * // 當調用 console2.log('msg') 時，所有輸出元素都會套用藍色
+ * // When calling console2.log('msg'), all output elements will be colored blue
  */
 export declare function _logArgv(this: Console2, argv: any[], name?: string, failBack?: string): {
     name: string;

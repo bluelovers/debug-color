@@ -33,6 +33,20 @@ export declare function isSupportsColor(): Level;
  *
  * @param console - Console2 實例 / Console2 instance
  * @returns 回調函數 / Callback function
+ *
+ * @example
+ * ```typescript
+ * import { createFnChalkByConsole } from 'debug-color2/lib/util';
+ * import { Console2 } from 'debug-color2/lib/node';
+ *
+ * const console2 = new Console2();
+ * const chalkFn = createFnChalkByConsole(console2);
+ *
+ * // 在回調中存取 chalk 和 console2
+ * const result = chalkFn((chalk, _console) => {
+ *     return chalk.red('Hello World');
+ * });
+ * ```
  */
 export declare function createFnChalkByConsole<CI extends Console2>(console: CI): <R, C extends Console2 = CI>(cb: (chalk: C["chalk"], _console: C) => R, _console?: C) => R;
 /**
@@ -44,6 +58,19 @@ export declare function createFnChalkByConsole<CI extends Console2>(console: CI)
  *
  * @param console - Console2 實例（可選）/ Console2 instance (optional)
  * @returns Chalk 實例 / Chalk instance
+ *
+ * @example
+ * ```typescript
+ * import { chalkByConsoleMaybe } from 'debug-color2/lib/util';
+ * import { Console2 } from 'debug-color2/lib/node';
+ *
+ * // 有 Console2 實例的情況
+ * const console2 = new Console2();
+ * const chalk1 = chalkByConsoleMaybe(console2); // 使用 console2.chalk
+ *
+ * // 沒有 Console2 實例的情況
+ * const chalk2 = chalkByConsoleMaybe(); // 使用預設的 chalk
+ * ```
  */
 export declare function chalkByConsoleMaybe<CI extends Console2>(console?: CI): IChalk;
 /**

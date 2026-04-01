@@ -19,5 +19,40 @@ import Console2, { IOptions } from '../node';
  * @param this - Console2 實例 / Console2 instance
  * @param data - 時間資料 / Time data
  * @returns 格式化後的時間字串 / Formatted time string
+ *
+ * @example
+ * // 預設格式（timeFormat: '[HH:mm:ss.SSS]'）
+ * // Default format (timeFormat: '[HH:mm:ss.SSS]')
+ *
+ * const console2 = new Console2({ time: true });
+ * console2.log('test');
+ * // Output: [14:30:25.123] test
+ *
+ * @example
+ * // 自訂時間格式
+ * // Custom time format
+ *
+ * const console2 = new Console2({
+ *   time: true,
+ *   timeFormat: '[yyyy-MM-dd HH:mm:ss]',
+ * });
+ * console2.log('test');
+ * // Output: [2024-01-15 14:30:25] test
+ *
+ * @example
+ * // 自訂時間格式化函式
+ * // Custom time formatting function
+ *
+ * const console2 = new Console2({
+ *   time: true,
+ *   timeFormatFn: (data) => {
+ *     // data.date = DateTime 實例
+ *     // data.failBackTimeFormat = 預設格式字串
+ *     // data.name = 方法名稱（如 'log'）
+ *     return `[${data.date.toFormat('yyyy-MM-dd')}]`;
+ *   },
+ * });
+ * console2.log('test');
+ * // Output: [2024-01-15] test
  */
 export declare function _time(this: Console2, data?: Parameters<IOptions["labelFormatFn"]>[0]): string;

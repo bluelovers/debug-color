@@ -10,11 +10,6 @@
  */
 import { IStyles, IStylesFnNames, IStylesNamesWithoutFn } from './types';
 /**
- * 匯出所有類型定義
- * Export all type definitions
- */
-export * from './types';
-/**
  * 從 Chalk 實例取得樣式名稱列表
  * Get style names from Chalk instance
  *
@@ -23,6 +18,15 @@ export * from './types';
  *
  * @param chalk - Chalk 實例 / Chalk instance
  * @returns 樣式名稱陣列 / Array of style names
+ *
+ * @example
+ * ```typescript
+ * import chalk from 'chalk';
+ * import { getStyleNamesByChalk } from 'debug-color2/lib/styles';
+ *
+ * const names = getStyleNamesByChalk(chalk);
+ * // ['bold', 'italic', 'underline', 'inverse', 'white', 'grey', 'black', ...]
+ * ```
  */
 export declare function getStyleNamesByChalk(chalk: any): (keyof IStyles)[];
 /**
@@ -31,6 +35,13 @@ export declare function getStyleNamesByChalk(chalk: any): (keyof IStyles)[];
  *
  * 從 Chalk Prototype 取得的樣式名稱列表
  * List of style names obtained from Chalk Prototype
+ *
+ * @example
+ * ```typescript
+ * import { styleNames } from 'debug-color2/lib/styles';
+ * console.log(styleNames);
+ * // ['bold', 'italic', 'underline', 'inverse', 'hidden', 'visible', 'black', ...]
+ * ```
  */
 export declare const styleNames: (keyof IStyles)[];
 /**
@@ -39,6 +50,13 @@ export declare const styleNames: (keyof IStyles)[];
  *
  * 需要傳入參數的樣式（如顏色值）
  * Styles that require parameters (like color values)
+ *
+ * @example
+ * ```typescript
+ * import { styleNamesFn } from 'debug-color2/lib/styles';
+ * console.log(styleNamesFn);
+ * // ['rgb', 'hsl', 'hsv', 'hwb', 'bgHex', 'bgKeyword', 'bgRgb', 'bgHsl', 'bgHsv', 'bgHwb', 'hex', 'keyword']
+ * ```
  */
 export declare const styleNamesFn: IStylesFnNames[];
 /**
@@ -47,5 +65,12 @@ export declare const styleNamesFn: IStylesFnNames[];
  *
  * 不需要傳入參數的樣式（如 bold, italic）
  * Styles that don't require parameters (like bold, italic)
+ *
+ * @example
+ * ```typescript
+ * import { styleNamesWithoutFn } from 'debug-color2/lib/styles';
+ * console.log(styleNamesWithoutFn);
+ * // ['bold', 'italic', 'underline', 'inverse', 'hidden', 'visible', 'black', 'red', ...]
+ * ```
  */
 export declare const styleNamesWithoutFn: IStylesNamesWithoutFn;
