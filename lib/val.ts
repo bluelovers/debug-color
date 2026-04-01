@@ -12,12 +12,6 @@
 import { IOptions } from './types';
 
 /**
- * 匯出所有類型定義
- * Export all type definitions
- */
-export * from './types';
-
-/**
  * Debug Console Symbol
  * 用於儲存 Debug Console 實例 / Used to store Debug Console instance
  *

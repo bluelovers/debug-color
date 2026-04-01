@@ -13,12 +13,6 @@ import chalk from 'chalk';
 import { IStyles, IStylesFnNames, IStylesNamesWithoutFn } from './types';
 
 /**
- * 匯出所有類型定義
- * Export all type definitions
- */
-export * from './types';
-
-/**
  * 從 Chalk 實例取得樣式名稱列表
  * Get style names from Chalk instance
  *

@@ -17,7 +17,8 @@ import { DateTime } from 'luxon';
 import { format as utilFormat, inherits as utilInherits } from 'util';
 import isNodeJs from './chk';
 import { methods_stdout, methods_stderr, methods } from './fill-property';
-import { styleNames, styleNamesFn, IChalkOptions } from './styles';
+import { styleNames, styleNamesFn } from './styles';
+import { IChalkOptions } from './types';
 import { defaultColors, SYM_CHALK, SYM_CONSOLE, SYM_DATA } from './val';
 import { arrayIncludes, hasConsoleStream, isForceColor } from './util';
 
