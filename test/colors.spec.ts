@@ -1,4 +1,5 @@
-import { styleNames, styleNamesFn, IStylesNameWithoutFn, styleNamesWithoutFn } from '../lib/styles';
+import { styleNames, styleNamesFn, styleNamesWithoutFn } from '../lib/styles';
+import { IStylesNameWithoutFn } from '../lib/types';
 import { console, Console2 } from '..';
 import { Console } from 'console';
 import { SYM_CONSOLE, SYM_CHALK, SYM_DATA } from '../lib/val';

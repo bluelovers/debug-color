@@ -67,7 +67,7 @@ exports[`Console Internal - _logArgv _logArgv documented snapshots should docume
     },
     "result": {
       "arr": [
-        "[0m[10:49:32.166][0m",
+        "[0m[11:03:02.317][0m",
         "[0mtest[0m",
       ],
       "arrCount": 2,
@@ -217,7 +217,7 @@ exports[`Console Internal - _logArgv _logArgv with label enabled should include 
 exports[`Console Internal - _logArgv _logArgv with time enabled should apply custom time format 1`] = `
 {
   "arr": [
-    "[0m[10:49][0m",
+    "[0m[11:03][0m",
     "[0mtest[0m",
   ],
   "name": "log",
@@ -227,7 +227,7 @@ exports[`Console Internal - _logArgv _logArgv with time enabled should apply cus
 exports[`Console Internal - _logArgv _logArgv with time enabled should include timestamp when time is enabled 1`] = `
 {
   "arr": [
-    "[0m[10:49:32.156][0m",
+    "[0m[11:03:02.309][0m",
     "[0mtest message[0m",
   ],
   "name": "log",
