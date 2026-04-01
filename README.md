@@ -231,6 +231,7 @@ Full TypeScript type definitions available at [lib/node.d.ts](lib/node.d.ts).
 - [實作細節 / Implementation](docs/implementation.md) - 鏈式呼叫與核心邏輯
 - [日誌模組 / Logger Module](docs/logger.md) - 預設日誌實例說明
 - [內部屬性與方法 / Internal Properties](docs/console2-internal.md) - Console2 內部符號與存取器
+- [配置選項 / Configuration Options](docs/ioptions.md) - IOptions 完整說明
 
 For more detailed documentation, see the [docs/](docs/) directory:
 
@@ -238,6 +239,7 @@ For more detailed documentation, see the [docs/](docs/) directory:
 - [Implementation Details](docs/implementation.md) - Chainable calling and core logic
 - [Logger Module](docs/logger.md) - Pre-configured logger instance
 - [Internal Properties and Methods](docs/console2-internal.md) - Console2 internal symbols and accessors
+- [Configuration Options](docs/ioptions.md) - Complete IOptions documentation
 
 ## 範例圖片 / Demo
 
