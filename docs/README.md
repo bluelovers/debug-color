@@ -133,6 +133,8 @@ _log.call(consoleInstance, 'log', ['message', data], 'log')
 
 ### lib/styles.ts
 
+关于颜色配置和 chalkOptions 的详细说明，请参考 [IOptions 配置选项](./ioptions.md)。
+
 | 导出项 | 类型 | 说明 |
 |--------|------|------|
 | `getStyleNamesByChalk` | 函数 | 从 Chalk 实例取得样式名称列表 |

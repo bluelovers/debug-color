@@ -54,6 +54,8 @@ const c3 = new Console(console, {
 
 ### 選項 / Options
 
+完整配置選項說明請參考 [IOptions 配置選項](docs/ioptions.md)。
+
 ```typescript
 export interface IOptions
 {
@@ -210,12 +212,16 @@ ConsoleColorize.console.log('Hello World!');
 
 ## 顏色支援 / Color Support
 
+詳細的顏色配置和樣式方法說明請參考 [IOptions 配置選項](docs/ioptions.md)。
+
 - **基本顏色**: black, red, green, yellow, blue, magenta, cyan, white, gray/grey
 - **亮色**: blackBright, redBright, greenBright, yellowBright, blueBright, magentaBright, cyanBright, whiteBright
 - **背景色**: bgBlack, bgRed, bgGreen, bgYellow, bgBlue, bgMagenta, bgCyan, bgWhite
 - **亮背景**: bgBlackBright, bgRedBright, bgGreenBright, bgYellowBright, bgBlueBright, bgMagentaBright, bgCyanBright, bgWhiteBright
 - **樣式**: bold, dim, italic, underline, inverse, hidden, strikethrough
 - **自定義顏色**: rgb(), hsl(), hsv(), hwb(), hex(), keyword()
+
+如需了解所有樣式方法（如 `rgb`, `hex`, `hsl` 等），請參考 [Implementation](docs/implementation.md)。
 
 ## TypeScript 類型 / TypeScript Types
 
